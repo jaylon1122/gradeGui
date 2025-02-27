@@ -8,6 +8,7 @@ package guigrade;
 import config.connectDB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,7 +22,30 @@ public class sign_in_ins extends javax.swing.JFrame {
     public sign_in_ins() {
         initComponents();
     }
-      
+      static String status1;
+    static String type1;
+    public static boolean loginAccount(String username, String password){
+          connectDB db = new connectDB();
+        try{
+            String query = "SELECT * FROM tbl_users WHERE username = '"+ username +"' AND pass = '"+password+"'";
+            ResultSet resultSet = db.getData(query);
+           
+            if(resultSet.next()){
+              
+                status1 = resultSet.getString("status"); 
+                type1 = resultSet.getString("type");
+                 
+                  return true;
+            }else{
+                return false; 
+            }
+        }catch(SQLException e){
+           
+            return false;
+        }
+        
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,11 +55,11 @@ public class sign_in_ins extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
-        password = new javax.swing.JPasswordField();
+        uname = new javax.swing.JTextField();
+        pw = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        login = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,16 +79,16 @@ public class sign_in_ins extends javax.swing.JFrame {
         jLabel1.setText("Sign In");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
 
-        username.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Username", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
-        username.addActionListener(new java.awt.event.ActionListener() {
+        uname.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Username", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
+        uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
+                unameActionPerformed(evt);
             }
         });
-        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 200, -1));
+        jPanel1.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 200, -1));
 
-        password.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 200, -1));
+        pw.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
+        jPanel1.add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 200, -1));
 
         jLabel3.setText("Don't have an account?");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, -1));
@@ -78,14 +102,19 @@ public class sign_in_ins extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("Sign In");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        login.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        login.setText("Sign In");
+        login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
+        jPanel1.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 490, 330));
 
@@ -94,21 +123,62 @@ public class sign_in_ins extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 30));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
+    }//GEN-LAST:event_unameActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
          reg_ins sign_in_ins = new reg_ins();
          sign_in_ins.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ins_dashb sign_in_ins = new ins_dashb();
-        sign_in_ins.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        
+    }//GEN-LAST:event_loginActionPerformed
+
+    private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
+     
+        connectDB db = new connectDB();
+        if (uname.getText().isEmpty() && pw.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter your username & password !!.");
+        } else if (uname.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please cannot be empty.");
+        } else if (pw.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Password cannot be empty.");
+        } else {
+            if (loginAccount(uname.getText(), pw.getText())) {
+                if (!status1.equals("Active")) {
+                    JOptionPane.showMessageDialog(null, "Pending Account, Please wait for the approval");
+                } else {
+            JOptionPane.showMessageDialog(null, "Login successful!");
+                        
+            if (type1.equals("Admin")) {
+                admin_dashb  ad= new admin_dashb();
+                ad.setVisible(true);
+                this.dispose();
+            } else if (type1.equals("Instructor")) {
+                ins_dashb id = new ins_dashb();
+                id.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "No account type found!");
+            }
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid Account, Please register first !!" );
+    }
+}
+
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_loginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -146,7 +216,6 @@ public class sign_in_ins extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -154,7 +223,8 @@ public class sign_in_ins extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JTextField username;
+    private javax.swing.JButton login;
+    private javax.swing.JPasswordField pw;
+    private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables
 }
