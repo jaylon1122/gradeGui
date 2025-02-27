@@ -49,5 +49,15 @@ public class connectDB {
       public Connection getConnection(){
           return connect;
       }
-      
+         // Function to insert/update/delete data (returns number of affected rows)
+    public int executeUpdate(String sql) {
+        int result = 0;
+        try (PreparedStatement pst = connect.prepareStatement(sql)) {
+            result = pst.executeUpdate();
+            System.out.println("Query Executed Successfully!");
+        } catch (SQLException ex) {
+            System.out.println("Query Execution Error: " + ex.getMessage());
+        }
+        return result;
+    }
 }
