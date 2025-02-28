@@ -5,6 +5,8 @@
  */
 package guigrade;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP745 G3
@@ -33,7 +35,7 @@ public class admin_pass extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        passadmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -53,6 +55,11 @@ public class admin_pass extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         jPasswordField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 160, 30));
 
         jLabel3.setForeground(new java.awt.Color(51, 0, 102));
@@ -64,15 +71,15 @@ public class admin_pass extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("OK");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        passadmin.setBackground(new java.awt.Color(255, 255, 255));
+        passadmin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        passadmin.setText("OK");
+        passadmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                passadminActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 70, 30));
+        jPanel1.add(passadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 70, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
@@ -85,10 +92,22 @@ public class admin_pass extends javax.swing.JFrame {
        admin_pass.setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void passadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passadminActionPerformed
         admin_dashb admin_pass = new admin_dashb();
         admin_pass.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        if (passadmin.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Field is required");
+       } else if (!passadmin.getText().equals("1234")) {
+            JOptionPane.showMessageDialog(null, "Wrong Password! Try Again.", "Error", JOptionPane.ERROR_MESSAGE);
+       } else {
+            JOptionPane.showMessageDialog(null, "Access Granted!");
+}
+    }//GEN-LAST:event_passadminActionPerformed
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,12 +145,12 @@ public class admin_pass extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JButton passadmin;
     // End of variables declaration//GEN-END:variables
 }

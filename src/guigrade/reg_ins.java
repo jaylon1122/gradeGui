@@ -67,6 +67,7 @@ public class reg_ins extends javax.swing.JFrame {
 
     return isDuplicate;
 }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,7 +94,6 @@ public class reg_ins extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         register = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        type = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -173,7 +173,7 @@ public class reg_ins extends javax.swing.JFrame {
         jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 200, -1));
 
         jLabel3.setText("Already have an account?");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("Sign In");
@@ -182,11 +182,11 @@ public class reg_ins extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, 50, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 50, -1));
 
         register.setBackground(new java.awt.Color(255, 255, 255));
         register.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        register.setText("Register");
+        register.setText("Sign In");
         register.setBorder(null);
         register.setBorderPainted(false);
         register.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -199,7 +199,7 @@ public class reg_ins extends javax.swing.JFrame {
                 registerActionPerformed(evt);
             }
         });
-        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 80, 30));
+        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 80, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -209,10 +209,7 @@ public class reg_ins extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 90, 30));
-
-        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type of User", "Admin", "Instructor" }));
-        jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 200, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 90, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 540));
 
@@ -251,7 +248,9 @@ public class reg_ins extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
-        // TODO add your handling code here:
+         admin_pass reg_ins = new admin_pass();
+         reg_ins.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_registerActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -285,7 +284,7 @@ public class reg_ins extends javax.swing.JFrame {
                 }else if(!password.getText().equals(cpass.getText())){
                     
                     JOptionPane.showMessageDialog(null, "Password not Matches");
-                }else if(type.getSelectedIndex() == 0){
+                }else if(type.getSelectedItem() == 0){
                     
                     JOptionPane.showMessageDialog(null, "Please select a Type of User");
                     
@@ -356,7 +355,6 @@ public class reg_ins extends javax.swing.JFrame {
     private javax.swing.JTextField lname;
     private javax.swing.JPasswordField password;
     private javax.swing.JButton register;
-    private javax.swing.JComboBox<String> type;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

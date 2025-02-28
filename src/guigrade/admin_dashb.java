@@ -116,7 +116,7 @@ public class admin_dashb extends javax.swing.JFrame {
 
         if (choice == JOptionPane.YES_OPTION) {
 
-           sign_in_ins si = new sign_in_ins();
+           welcomepage si = new welcomepage();
             si.setVisible(true);
             this.dispose();
         }
