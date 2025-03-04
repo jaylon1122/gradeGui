@@ -5,6 +5,7 @@
  */
 package guigrade;
 
+import config.Session;
 import config.connectDB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,10 +23,12 @@ public class sign_in_ins extends javax.swing.JFrame {
     public sign_in_ins() {
         initComponents();
     }
-      static String status1;
+    static String status1;
     static String type1;
+    
     public static boolean loginAccount(String username, String password){
           connectDB db = new connectDB();
+          
         try{
             String query = "SELECT * FROM tbl_users WHERE username = '"+ username +"' AND pass = '"+password+"'";
             ResultSet resultSet = db.getData(query);
@@ -34,7 +37,10 @@ public class sign_in_ins extends javax.swing.JFrame {
               
                 status1 = resultSet.getString("status"); 
                 type1 = resultSet.getString("type");
-                 
+                
+                Session sess = Session.getInstance();
+                sess.setId(resultSet.getString("id"));
+                
                   return true;
             }else{
                 return false; 
