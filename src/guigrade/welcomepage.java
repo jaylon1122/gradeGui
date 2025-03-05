@@ -50,7 +50,7 @@ public class welcomepage extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(70, 70, 135));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 30));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true));
@@ -99,13 +99,13 @@ public class welcomepage extends javax.swing.JFrame {
         jLabel6.setText("Choose account type");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 350, 240));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 350, 240));
 
         jPanel3.setBackground(new java.awt.Color(212, 212, 247));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, -40, -1, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 200, 240));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 90, 240));
 
         pack();
         setLocationRelativeTo(null);

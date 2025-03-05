@@ -99,7 +99,7 @@ public class admin_pass extends javax.swing.JFrame {
         if (passadmin.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Field is required");
        } else if (!passadmin.getText().equals("1234")) {
-            JOptionPane.showMessageDialog(null, "Wrong Password! Try Again.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Log In Successful!", "Okay", JOptionPane.INFORMATION_MESSAGE);
        } else {
             JOptionPane.showMessageDialog(null, "Access Granted!");
 }

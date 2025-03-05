@@ -182,7 +182,7 @@ public class reg_ins extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 50, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 50, -1));
 
         register.setBackground(new java.awt.Color(255, 255, 255));
         register.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -248,20 +248,8 @@ public class reg_ins extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
-         admin_pass reg_ins = new admin_pass();
-         reg_ins.setVisible(true);
-         this.dispose();
-    }//GEN-LAST:event_registerActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         welcomepage reg_ins = new welcomepage();
-         reg_ins.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
-       
-        
-         connectDB db = new connectDB();
+         
+        connectDB db = new connectDB();
       
         if(username.getText().isEmpty() || fname.getText().isEmpty() || lname.getText().isEmpty() || em.getText().isEmpty() || cn.getText().isEmpty() 
                 || password.getText().isEmpty() || cpass.getText().isEmpty()){
@@ -284,23 +272,27 @@ public class reg_ins extends javax.swing.JFrame {
                 }else if(!password.getText().equals(cpass.getText())){
                     
                     JOptionPane.showMessageDialog(null, "Password not Matches");
-                }else if(type.getSelectedItem() == 0){
-                    
-                    JOptionPane.showMessageDialog(null, "Please select a Type of User");
-                    
-                    
-                }else if (db.insertData("INSERT INTO tbl_users (username, fname, lname, email, contact, type, pass, cpass, status) "
+                }else if (db.insertData("INSERT INTO tbl_users(username, fname, lname, email, contact, type, pass, cpass, status) "
                         + "VALUES ('"+username.getText()+"', '"+fname.getText()+"', '"+lname.getText()+"', '"+em.getText()+"', "
-                                + "'"+cn.getText()+"', '"+type.getSelectedItem()+"', '"+password.getText()+"', "
-                                        + "'"+cpass.getText()+"', 'Pending')") == 1){
-                    
-                    JOptionPane.showMessageDialog(null, "Submitted Succesfully !! ");  
-                    sign_in_ins si = new sign_in_ins();
-                   si.setVisible(true);
-                    this.dispose();
-     
-              
+                                + "'"+cn.getText()+"', '\"+type.getSelectedItem()+\"','"+password.getText()+"', "
+                                        + "'"+cpass.getText()+"', 'Pending')") == 1){  
+         
+        JOptionPane.showMessageDialog(null, "Submitted Successfuly");
+        sign_in_ins reg_ins = new sign_in_ins();
+         reg_ins.setVisible(true);
+         this.dispose(); 
+        
         }
+    }//GEN-LAST:event_registerActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         welcomepage reg_ins = new welcomepage();
+         reg_ins.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
+       
+       
     }//GEN-LAST:event_registerMouseClicked
 
     /**
