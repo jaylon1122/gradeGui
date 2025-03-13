@@ -80,7 +80,6 @@ public class reg_ins extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
@@ -101,25 +100,20 @@ public class reg_ins extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(23, 13, 43));
+        jPanel2.setBackground(new java.awt.Color(14, 14, 29));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 30));
 
-        jPanel3.setBackground(new java.awt.Color(170, 184, 213));
+        jPanel3.setBackground(new java.awt.Color(88, 88, 100));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/bv-reg instructor.png"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -410, 540, 990));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 500));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 170, 500));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile_3135715 (1).png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Sign Up");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
 
         username.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Username", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         username.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +121,7 @@ public class reg_ins extends javax.swing.JFrame {
                 usernameActionPerformed(evt);
             }
         });
-        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 200, -1));
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 200, -1));
 
         fname.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "First Name", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         fname.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +129,7 @@ public class reg_ins extends javax.swing.JFrame {
                 fnameActionPerformed(evt);
             }
         });
-        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 200, -1));
+        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 200, -1));
 
         cn.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Contact Number", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         cn.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +137,7 @@ public class reg_ins extends javax.swing.JFrame {
                 cnActionPerformed(evt);
             }
         });
-        jPanel1.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 200, -1));
+        jPanel1.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 200, -1));
 
         lname.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Last Name", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         lname.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +145,7 @@ public class reg_ins extends javax.swing.JFrame {
                 lnameActionPerformed(evt);
             }
         });
-        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 200, -1));
+        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 200, -1));
 
         em.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Email", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         em.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +153,7 @@ public class reg_ins extends javax.swing.JFrame {
                 emActionPerformed(evt);
             }
         });
-        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 200, -1));
+        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 200, -1));
 
         cpass.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Confirm Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         cpass.addActionListener(new java.awt.event.ActionListener() {
@@ -167,13 +161,13 @@ public class reg_ins extends javax.swing.JFrame {
                 cpassActionPerformed(evt);
             }
         });
-        jPanel1.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 200, -1));
+        jPanel1.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 200, -1));
 
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 200, -1));
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 200, -1));
 
         jLabel3.setText("Already have an account?");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("Sign In");
@@ -182,11 +176,11 @@ public class reg_ins extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 50, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, 50, -1));
 
         register.setBackground(new java.awt.Color(255, 255, 255));
         register.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        register.setText("Sign In");
+        register.setText("Sign Up");
         register.setBorder(null);
         register.setBorderPainted(false);
         register.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -199,7 +193,7 @@ public class reg_ins extends javax.swing.JFrame {
                 registerActionPerformed(evt);
             }
         });
-        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 80, 30));
+        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 80, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -209,9 +203,9 @@ public class reg_ins extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 90, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 90, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 540));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 530));
 
         pack();
         setLocationRelativeTo(null);
@@ -339,7 +333,6 @@ public class reg_ins extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
