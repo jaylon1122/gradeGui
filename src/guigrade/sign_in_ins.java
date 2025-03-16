@@ -5,6 +5,7 @@
  */
 package guigrade;
 
+import admin.admin_dashb;
 import config.Session;
 import config.connectDB;
 import java.sql.ResultSet;
@@ -34,14 +35,21 @@ public class sign_in_ins extends javax.swing.JFrame {
             ResultSet resultSet = db.getData(query);
            
             if(resultSet.next()){
-              
+               
                 status1 = resultSet.getString("status"); 
                 type1 = resultSet.getString("type");
                 
                 Session sess = Session.getInstance();
-                sess.setId(resultSet.getString("id"));
-                
+                    sess.setId(resultSet.getInt("id"));
+                    sess.setFname(resultSet.getString("fname"));
+                    sess.setLname(resultSet.getString("lname"));
+                    sess.setEmail(resultSet.getString("email"));
+                    sess.setUsername(resultSet.getString("username"));
+                    sess.setType(resultSet.getString("type"));
+                    sess.setStatus(resultSet.getString("status"));
+                System.out.println(""+sess.getId());
                   return true;
+               
             }else{
                 return false; 
             }
@@ -58,7 +66,6 @@ public class sign_in_ins extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         uname = new javax.swing.JTextField();
@@ -66,6 +73,7 @@ public class sign_in_ins extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         login = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,10 +81,6 @@ public class sign_in_ins extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/bv-reg instructor.png"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -620, 150, 960));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile_3135715 (1).png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
@@ -122,9 +126,13 @@ public class sign_in_ins extends javax.swing.JFrame {
         });
         jPanel1.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
 
+        jPanel3.setBackground(new java.awt.Color(88, 88, 100));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 330));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 490, 330));
 
-        jPanel2.setBackground(new java.awt.Color(70, 70, 135));
+        jPanel2.setBackground(new java.awt.Color(26, 6, 74));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 30));
 
@@ -166,7 +174,7 @@ public class sign_in_ins extends javax.swing.JFrame {
                 admin_dashb  ad= new admin_dashb();
                 ad.setVisible(true);
                 this.dispose();
-            } else if (type1.equals("Instructor")) {
+            } else if (type1.equals("User")) {
                 ins_dashb id = new ins_dashb();
                 id.setVisible(true);
                 this.dispose();
@@ -225,10 +233,10 @@ public class sign_in_ins extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton login;
     private javax.swing.JPasswordField pw;
     private javax.swing.JTextField uname;

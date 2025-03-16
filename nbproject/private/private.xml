@@ -3,13 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/SCC-COLLEGE/Desktop/gradeGui/src/guigrade/admin_pass.java</file>
-            <file>file:/C:/Users/SCC-COLLEGE/Desktop/gradeGui/src/guigrade/welcomepage.java</file>
-            <file>file:/C:/Users/SCC-COLLEGE/Desktop/gradeGui/src/guigrade/ins_dashb.java</file>
-            <file>file:/C:/Users/SCC-COLLEGE/Desktop/gradeGui/src/guigrade/admin_dashb.java</file>
-            <file>file:/C:/Users/SCC-COLLEGE/Desktop/gradeGui/src/guigrade/reg_ins.java</file>
-            <file>file:/C:/Users/SCC-COLLEGE/Desktop/gradeGui/src/guigrade/sign_in_ins.java</file>
-            <file>file:/C:/Users/SCC-COLLEGE/Desktop/gradeGui/src/config/Session.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/admin_dashb.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/admin_pass.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/config/Session.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/new_reg.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/settings/admin_settings.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/settings/user_settings.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/grade.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/sign_in_ins.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/ins_dashb.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/student/student_dashb.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/reg_ins.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/reg_new_admin.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/course.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/welcomepage.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/student/student_data.java</file>
         </group>
     </open-files>
 </project-private>

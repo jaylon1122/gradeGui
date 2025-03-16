@@ -11,7 +11,7 @@ package config;
  */
 public class Session {
     private static Session instance;
-    private String id;
+    private int id;
     private String fname;
     private String lname;
     private String email;
@@ -34,11 +34,11 @@ public class Session {
         return instance == null;
     }
     
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

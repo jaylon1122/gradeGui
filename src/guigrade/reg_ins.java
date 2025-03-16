@@ -88,11 +88,12 @@ public class reg_ins extends javax.swing.JFrame {
         lname = new javax.swing.JTextField();
         em = new javax.swing.JTextField();
         cpass = new javax.swing.JPasswordField();
-        password = new javax.swing.JPasswordField();
+        pass = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         register = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        ut = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -100,7 +101,7 @@ public class reg_ins extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(14, 14, 29));
+        jPanel2.setBackground(new java.awt.Color(26, 6, 74));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 30));
 
@@ -163,8 +164,8 @@ public class reg_ins extends javax.swing.JFrame {
         });
         jPanel1.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 200, -1));
 
-        password.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 200, -1));
+        pass.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
+        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 200, -1));
 
         jLabel3.setText("Already have an account?");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
@@ -193,7 +194,7 @@ public class reg_ins extends javax.swing.JFrame {
                 registerActionPerformed(evt);
             }
         });
-        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 80, 30));
+        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 80, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -203,7 +204,15 @@ public class reg_ins extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 90, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 90, 30));
+
+        ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User Type", "User", "Admin" }));
+        ut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                utActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 180, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 530));
 
@@ -244,9 +253,9 @@ public class reg_ins extends javax.swing.JFrame {
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
          
         connectDB db = new connectDB();
-      
+        
         if(username.getText().isEmpty() || fname.getText().isEmpty() || lname.getText().isEmpty() || em.getText().isEmpty() || cn.getText().isEmpty() 
-                || password.getText().isEmpty() || cpass.getText().isEmpty()){
+                || pass.getText().isEmpty() || cpass.getText().isEmpty()){
                JOptionPane.showMessageDialog(null, "All fields required");
                
         }else if(!isEmailValid(em.getText())){
@@ -260,34 +269,41 @@ public class reg_ins extends javax.swing.JFrame {
                 }else if(cn.getText().length() > 11){
                     
                     JOptionPane.showMessageDialog(null, "Contact number shound not exceed to 11 numbers");
-                }else if(password.getText().length() < 8){
+                }else if(pass.getText().length() < 8){
                     
                     JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long");
-                }else if(!password.getText().equals(cpass.getText())){
+                }else if(!pass.getText().equals(cpass.getText())){
                     
                     JOptionPane.showMessageDialog(null, "Password not Matches");
                 }else if (db.insertData("INSERT INTO tbl_users(username, fname, lname, email, contact, type, pass, cpass, status) "
                         + "VALUES ('"+username.getText()+"', '"+fname.getText()+"', '"+lname.getText()+"', '"+em.getText()+"', "
-                                + "'"+cn.getText()+"', '\"+type.getSelectedItem()+\"','"+password.getText()+"', "
-                                        + "'"+cpass.getText()+"', 'Pending')") == 1){  
+                        + "'"+cn.getText()+"', '"+ut.getSelectedItem()+"', '"+pass.getText()+"', "
+                        + "'"+cpass.getText()+"', 'Pending')") == 1) {
+                
          
-        JOptionPane.showMessageDialog(null, "Submitted Successfuly");
-        sign_in_ins reg_ins = new sign_in_ins();
-         reg_ins.setVisible(true);
-         this.dispose(); 
-        
-        }
+                    JOptionPane.showMessageDialog(null, "Submitted Successfuly");
+                        sign_in_ins reg_ins = new sign_in_ins();
+                        reg_ins.setVisible(true);
+                        this.dispose();
+                }else{
+                     JOptionPane.showMessageDialog(null, "Connection Error");
+                }
     }//GEN-LAST:event_registerActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
          welcomepage reg_ins = new welcomepage();
          reg_ins.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
        
        
     }//GEN-LAST:event_registerMouseClicked
+
+    private void utActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_utActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,6 +336,7 @@ public class reg_ins extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new reg_ins().setVisible(true);
+               
             }
         });
     }
@@ -338,8 +355,9 @@ public class reg_ins extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField lname;
-    private javax.swing.JPasswordField password;
+    private javax.swing.JPasswordField pass;
     private javax.swing.JButton register;
     private javax.swing.JTextField username;
+    private javax.swing.JComboBox<String> ut;
     // End of variables declaration//GEN-END:variables
 }

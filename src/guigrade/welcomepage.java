@@ -5,6 +5,7 @@
  */
 package guigrade;
 
+import admin.admin_pass;
 import static java.lang.reflect.Array.set;
 
 /**
@@ -48,7 +49,7 @@ public class welcomepage extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(70, 70, 135));
+        jPanel1.setBackground(new java.awt.Color(26, 6, 74));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 30));
 
@@ -101,7 +102,7 @@ public class welcomepage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 350, 240));
 
-        jPanel3.setBackground(new java.awt.Color(212, 212, 247));
+        jPanel3.setBackground(new java.awt.Color(88, 88, 100));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, -40, -1, -1));
 
@@ -114,6 +115,7 @@ public class welcomepage extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         admin_pass welcomepage = new admin_pass();
          welcomepage.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -124,7 +126,7 @@ public class welcomepage extends javax.swing.JFrame {
 
         sign_in_ins welcomepage = new sign_in_ins();
         welcomepage.setVisible(true);
-         
+        this.dispose(); 
     }//GEN-LAST:event_jButton2MouseClicked
 
     /**
