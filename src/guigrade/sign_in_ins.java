@@ -47,7 +47,7 @@ public class sign_in_ins extends javax.swing.JFrame {
                     sess.setUsername(resultSet.getString("username"));
                     sess.setType(resultSet.getString("type"));
                     sess.setStatus(resultSet.getString("status"));
-                System.out.println(""+sess.getId());
+                
                   return true;
                
             }else{
@@ -157,6 +157,7 @@ public class sign_in_ins extends javax.swing.JFrame {
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
      
         connectDB db = new connectDB();
+        
         if (uname.getText().isEmpty() && pw.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter your username & password !!.");
         } else if (uname.getText().isEmpty()) {
