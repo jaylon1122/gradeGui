@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import student.student_dashb;
+import student.student_data;
 
 
 /**
@@ -63,9 +64,11 @@ public class admin_dashb extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         p_add = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        p_student = new javax.swing.JPanel();
+        p_update = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         p_delete = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        p_student = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -117,17 +120,17 @@ public class admin_dashb extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("LOGOUT");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 100, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Grade");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 80, 50));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 90, 50));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Ranking");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, 50));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 270, 90, 50));
 
         p_add.setBackground(new java.awt.Color(88, 88, 100));
         p_add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,22 +155,22 @@ public class admin_dashb extends javax.swing.JFrame {
 
         jPanel3.add(p_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 130, 40));
 
-        p_student.setBackground(new java.awt.Color(88, 88, 100));
-        p_student.addMouseListener(new java.awt.event.MouseAdapter() {
+        p_update.setBackground(new java.awt.Color(88, 88, 100));
+        p_update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                p_studentMouseEntered(evt);
+                p_updateMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                p_studentMouseExited(evt);
+                p_updateMouseExited(evt);
             }
         });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Update");
-        p_student.add(jLabel10);
+        p_update.add(jLabel10);
 
-        jPanel3.add(p_student, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 40));
+        jPanel3.add(p_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 40));
 
         p_delete.setBackground(new java.awt.Color(88, 88, 100));
         p_delete.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,6 +183,26 @@ public class admin_dashb extends javax.swing.JFrame {
         });
         p_delete.setLayout(null);
         jPanel3.add(p_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 130, 50));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Student");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 90, -1));
+
+        p_student.setBackground(new java.awt.Color(88, 88, 100));
+        p_student.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p_studentMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                p_studentMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                p_studentMouseExited(evt);
+            }
+        });
+        p_student.setLayout(null);
+        jPanel3.add(p_student, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 130, 50));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, 370));
 
@@ -266,13 +289,13 @@ public class admin_dashb extends javax.swing.JFrame {
        p_add.setBackground(navcolor); 
     }//GEN-LAST:event_p_addMouseExited
 
-    private void p_studentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_studentMouseEntered
-        p_student.setBackground(hovercolor);
-    }//GEN-LAST:event_p_studentMouseEntered
+    private void p_updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_updateMouseEntered
+        p_update.setBackground(hovercolor);
+    }//GEN-LAST:event_p_updateMouseEntered
 
-    private void p_studentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_studentMouseExited
-        p_student.setBackground(navcolor);
-    }//GEN-LAST:event_p_studentMouseExited
+    private void p_updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_updateMouseExited
+        p_update.setBackground(navcolor);
+    }//GEN-LAST:event_p_updateMouseExited
 
     private void p_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseClicked
       reg_admin admin_dashb = new reg_admin();
@@ -287,6 +310,20 @@ public class admin_dashb extends javax.swing.JFrame {
     private void p_deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_deleteMouseExited
          p_delete.setBackground(navcolor); 
     }//GEN-LAST:event_p_deleteMouseExited
+
+    private void p_studentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_studentMouseEntered
+       p_student.setBackground(hovercolor); 
+    }//GEN-LAST:event_p_studentMouseEntered
+
+    private void p_studentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_studentMouseExited
+        p_student.setBackground(navcolor); 
+    }//GEN-LAST:event_p_studentMouseExited
+
+    private void p_studentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_studentMouseClicked
+         student_dashb admin_dashb = new student_dashb();
+         admin_dashb.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_p_studentMouseClicked
 
     /**
      * @param args the command line arguments
@@ -330,6 +367,7 @@ public class admin_dashb extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -347,6 +385,7 @@ public class admin_dashb extends javax.swing.JFrame {
     private javax.swing.JPanel p_add;
     private javax.swing.JPanel p_delete;
     private javax.swing.JPanel p_student;
+    private javax.swing.JPanel p_update;
     private javax.swing.JTable userstable;
     // End of variables declaration//GEN-END:variables
 }
