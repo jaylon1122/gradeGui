@@ -7,6 +7,7 @@ package admin;
 
 import config.Session;
 import config.connectDB;
+import grade.grade_dashb;
 import guigrade.sign_in_ins;
 import guigrade.welcomepage;
 import java.awt.Color;
@@ -69,6 +70,7 @@ public class admin_dashb extends javax.swing.JFrame {
         p_delete = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         p_student = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -125,7 +127,7 @@ public class admin_dashb extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Grade");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 90, 50));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 90, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -203,6 +205,15 @@ public class admin_dashb extends javax.swing.JFrame {
         });
         p_student.setLayout(null);
         jPanel3.add(p_student, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 130, 50));
+
+        jPanel2.setBackground(new java.awt.Color(88, 88, 100));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
+        jPanel2.setLayout(null);
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, 370));
 
@@ -325,6 +336,12 @@ public class admin_dashb extends javax.swing.JFrame {
             this.dispose();
     }//GEN-LAST:event_p_studentMouseClicked
 
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+       grade_dashb admin_dashb = new grade_dashb();
+       admin_dashb.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jPanel2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -377,6 +394,7 @@ public class admin_dashb extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;

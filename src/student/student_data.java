@@ -48,6 +48,12 @@ public class student_data extends javax.swing.JFrame {
             if (resultSet.next()) {
                 JOptionPane.showMessageDialog(null, "Email is already used");
                 isDuplicate = true;
+            }else{
+                JOptionPane.showMessageDialog(null, "Added Successfuly");
+                student_dashb student_data = new student_dashb();
+                student_data.setVisible(true);
+                this.dispose();
+                
             }
 
             resultSet.close();
@@ -136,7 +142,7 @@ public class student_data extends javax.swing.JFrame {
         jLabel4.setText("Add Student");
         jPanel4.add(jLabel4);
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 110, 30));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 110, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 430, 350));
 
@@ -149,7 +155,7 @@ public class student_data extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-         ins_dashb student_data = new ins_dashb();
+         student_dashb student_data = new student_dashb();
          student_data.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_jPanel3MouseClicked
