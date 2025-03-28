@@ -56,13 +56,13 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="1"/>
+              <Font name="Tahoma" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Update User Form"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="210" y="50" width="-1" height="-1"/>
+              <AbsoluteConstraints x="180" y="50" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

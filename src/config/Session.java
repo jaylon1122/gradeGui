@@ -15,12 +15,22 @@ public class Session {
     private String fname;
     private String lname;
     private String email;
+    
+  public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
     private String username;
     private String type;
+    private String pass;
     private String status;
-    
+    private String image;
+    private String contact;
     private Session(){
-        
+   
     }
     
     public static synchronized Session getInstance() {
@@ -90,5 +100,21 @@ public class Session {
         this.status = status;
     }
     
+     public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     
 }
+

@@ -5,6 +5,7 @@
  */
 package guigrade;
 
+import user.ins_dashb;
 import admin.admin_dashb;
 import config.Session;
 import config.connectDB;

@@ -89,11 +89,7 @@ public class reg_admin extends javax.swing.JFrame {
         ut = new javax.swing.JComboBox<>();
         us = new javax.swing.JComboBox<>();
         id = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,14 +99,14 @@ public class reg_admin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(26, 6, 74));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile_3135715 (1).png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("New User");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
         username.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Username", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         username.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +114,7 @@ public class reg_admin extends javax.swing.JFrame {
                 usernameActionPerformed(evt);
             }
         });
-        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 200, -1));
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 200, 60));
 
         fname.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "First Name", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         fname.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +122,7 @@ public class reg_admin extends javax.swing.JFrame {
                 fnameActionPerformed(evt);
             }
         });
-        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, -1));
+        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 200, 60));
 
         lname.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Last Name", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         lname.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +130,7 @@ public class reg_admin extends javax.swing.JFrame {
                 lnameActionPerformed(evt);
             }
         });
-        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 200, -1));
+        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, 60));
 
         em.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Email", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         em.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +138,7 @@ public class reg_admin extends javax.swing.JFrame {
                 emActionPerformed(evt);
             }
         });
-        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 200, -1));
+        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 200, 60));
 
         cpass.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Confirm Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         cpass.addActionListener(new java.awt.event.ActionListener() {
@@ -150,10 +146,10 @@ public class reg_admin extends javax.swing.JFrame {
                 cpassActionPerformed(evt);
             }
         });
-        jPanel1.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 200, -1));
+        jPanel1.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 200, 60));
 
         pass.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
-        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 200, -1));
+        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 200, 60));
 
         register.setBackground(new java.awt.Color(255, 255, 255));
         register.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -170,7 +166,7 @@ public class reg_admin extends javax.swing.JFrame {
                 registerActionPerformed(evt);
             }
         });
-        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 100, 40));
+        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 80, 30));
 
         ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User Type", "User", "Admin" }));
         ut.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +174,7 @@ public class reg_admin extends javax.swing.JFrame {
                 utActionPerformed(evt);
             }
         });
-        jPanel1.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 180, 30));
+        jPanel1.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 180, 60));
 
         us.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staus Type", "Active", "Pending" }));
         us.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +182,7 @@ public class reg_admin extends javax.swing.JFrame {
                 usActionPerformed(evt);
             }
         });
-        jPanel1.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 180, 30));
+        jPanel1.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 180, 60));
 
         id.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "ID", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         id.addActionListener(new java.awt.event.ActionListener() {
@@ -194,34 +190,18 @@ public class reg_admin extends javax.swing.JFrame {
                 idActionPerformed(evt);
             }
         });
-        jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 200, -1));
+        jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 200, 60));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Update");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton6.setText("Back");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 100, 40));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 80, 30));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Delete");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 100, 40));
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setText("Clear");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 100, 40));
-
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton4.setText("Cancel");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 100, 40));
-
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setText("Refresh");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 100, 40));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 530));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 590));
 
         pack();
         setLocationRelativeTo(null);
@@ -295,9 +275,11 @@ public class reg_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+         admin_dashb reg_admin = new admin_dashb();
+         reg_admin.setVisible(true);
+         this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,11 +321,7 @@ public class reg_admin extends javax.swing.JFrame {
     public javax.swing.JTextField em;
     public javax.swing.JTextField fname;
     public javax.swing.JTextField id;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

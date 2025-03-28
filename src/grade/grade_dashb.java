@@ -5,7 +5,8 @@
  */
 package grade;
 
-import guigrade.ins_dashb;
+import enrollment.enroll;
+import user.ins_dashb;
 
 /**
  *
@@ -42,6 +43,8 @@ public class grade_dashb extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,14 +60,14 @@ public class grade_dashb extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("Grade Panel");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 350, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 480, 20));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Quit");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/school_14841126.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Add Grade");
@@ -73,25 +76,25 @@ public class grade_dashb extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/grades_12003063.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Edit Grade");
         jButton3.setToolTipText("");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/censorship_15747990.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setText("Delete Grade");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/requirement_14752484.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton5.setText("List of Students");
@@ -100,22 +103,32 @@ public class grade_dashb extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 440, 400));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/graduation_16584819.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+
+        jButton6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton6.setText("Student Enrollmnent");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 590, 400));
 
         jPanel4.setBackground(new java.awt.Color(26, 6, 74));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 30));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 30));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      grade grade_dashb = new grade();
-      grade_dashb.setVisible(true);
-      this.dispose();
+      
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -123,6 +136,12 @@ public class grade_dashb extends javax.swing.JFrame {
         grade_dashb.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+       enroll grade_dashb = new enroll();
+       grade_dashb.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,12 +184,14 @@ public class grade_dashb extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;

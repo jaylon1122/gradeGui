@@ -6,7 +6,7 @@
 package student;
 
 import config.connectDB;
-import guigrade.ins_dashb;
+import user.ins_dashb;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -78,7 +78,6 @@ public class student_data extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         cn = new javax.swing.JTextField();
-        id = new javax.swing.JTextField();
         fname = new javax.swing.JTextField();
         lname = new javax.swing.JTextField();
         em = new javax.swing.JTextField();
@@ -95,7 +94,7 @@ public class student_data extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/student_18181142 (1).png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Student Information ");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
 
@@ -113,23 +112,20 @@ public class student_data extends javax.swing.JFrame {
         jLabel3.setText("Quit");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 30));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 50, 30));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 280, 30));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 50, 30));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 480, 30));
 
         cn.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Contact Number "));
-        jPanel2.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 170, 50));
-
-        id.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Id"));
-        jPanel2.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 170, 50));
+        jPanel2.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 240, 70));
 
         fname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "First Name"));
-        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 170, 50));
+        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 240, 70));
 
         lname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Last Name"));
-        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 170, 50));
+        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 240, 70));
 
         em.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Email"));
-        jPanel2.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 170, 50));
+        jPanel2.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 240, 70));
 
         jPanel4.setBackground(new java.awt.Color(99, 87, 119));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,13 +138,13 @@ public class student_data extends javax.swing.JFrame {
         jLabel4.setText("Add Student");
         jPanel4.add(jLabel4);
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 110, -1));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 110, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 430, 350));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 360));
 
         jPanel1.setBackground(new java.awt.Color(26, 6, 74));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 30));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -230,7 +226,6 @@ public class student_data extends javax.swing.JFrame {
     private javax.swing.JTextField cn;
     private javax.swing.JTextField em;
     private javax.swing.JTextField fname;
-    private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

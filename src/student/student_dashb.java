@@ -88,10 +88,20 @@ public class student_dashb extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Update/Edit student");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Delete Student");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -135,6 +145,18 @@ public class student_dashb extends javax.swing.JFrame {
        student_dashb.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        update_student student_dashb = new update_student();
+        student_dashb.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        delete_student student_dashb = new delete_student();
+        student_dashb.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

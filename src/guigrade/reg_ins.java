@@ -6,6 +6,8 @@
 package guigrade;
 
 import config.connectDB;
+import config.passwordHasher;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -253,41 +255,53 @@ public class reg_ins extends javax.swing.JFrame {
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
          
         connectDB db = new connectDB();
-        
-        if(username.getText().isEmpty() || fname.getText().isEmpty() || lname.getText().isEmpty() || em.getText().isEmpty() || cn.getText().isEmpty() 
-                || pass.getText().isEmpty() || cpass.getText().isEmpty()){
-               JOptionPane.showMessageDialog(null, "All fields required");
-               
-        }else if(!isEmailValid(em.getText())){
-            JOptionPane.showMessageDialog(null, "Your email format is invalid, Please Try again!");
-        }else if(duplicateChecker()){
-            System.out.println("Duplicate Existed");
+    
+    if (username.getText().isEmpty() || fname.getText().isEmpty() || lname.getText().isEmpty() || 
+        em.getText().isEmpty() || cn.getText().isEmpty() || pass.getText().isEmpty() || cpass.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "All fields are required");
+    } else if (!isEmailValid(em.getText())) {
+        JOptionPane.showMessageDialog(null, "Invalid email format. Please try again!");
+    } else if (duplicateChecker()) {
+        System.out.println("Duplicate Existed");
+    } else if (!cn.getText().matches("\\d+")) {
+        JOptionPane.showMessageDialog(null, "Contact number must contain only numbers!");
+    } else if (cn.getText().length() > 11) {
+        JOptionPane.showMessageDialog(null, "Contact number should not exceed 11 digits");
+    } else if (pass.getText().length() < 8) {
+        JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long");
+    } else if (!pass.getText().equals(cpass.getText())) {
+        JOptionPane.showMessageDialog(null, "Passwords do not match");
+    } else {
+        try {
+            String hashedPassword = passwordHasher.hashPassword(pass.getText());
+            String query = "INSERT INTO tbl_users(username, fname, lname, email, contact, type, pass, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement pstmt = db.getConnection().prepareStatement(query);
+            pstmt.setString(1, username.getText());
+            pstmt.setString(2, fname.getText());
+            pstmt.setString(3, lname.getText());
+            pstmt.setString(4, em.getText());
+            pstmt.setString(5, cn.getText());
+            pstmt.setString(6, ut.getSelectedItem().toString());
+            pstmt.setString(7, hashedPassword);
+            pstmt.setString(8, "Pending");
+
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted > 0) {
+                JOptionPane.showMessageDialog(null, "Registration Successful");
+                sign_in_ins signInPage = new sign_in_ins();
+                signInPage.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error during registration. Please try again.");
+            }
+            pstmt.close();
+        } catch (NoSuchAlgorithmException | SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "An error occurred. Please try again.");
         }
-                else if(!cn.getText().matches("\\d+")){
-                    
-                    JOptionPane.showMessageDialog(null, "Contact number only accepts numeric !");
-                }else if(cn.getText().length() > 11){
-                    
-                    JOptionPane.showMessageDialog(null, "Contact number shound not exceed to 11 numbers");
-                }else if(pass.getText().length() < 8){
-                    
-                    JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long");
-                }else if(!pass.getText().equals(cpass.getText())){
-                    
-                    JOptionPane.showMessageDialog(null, "Password not Matches");
-                }else if (db.insertData("INSERT INTO tbl_users(username, fname, lname, email, contact, type, pass, cpass, status) "
-                        + "VALUES ('"+username.getText()+"', '"+fname.getText()+"', '"+lname.getText()+"', '"+em.getText()+"', "
-                        + "'"+cn.getText()+"', '"+ut.getSelectedItem()+"', '"+pass.getText()+"', "
-                        + "'"+cpass.getText()+"', 'Pending')") == 1) {
-                
-         
-                    JOptionPane.showMessageDialog(null, "Submitted Successfuly");
-                        sign_in_ins reg_ins = new sign_in_ins();
-                        reg_ins.setVisible(true);
-                        this.dispose();
-                }else{
-                     JOptionPane.showMessageDialog(null, "Connection Error");
-                }
+    }
+
     }//GEN-LAST:event_registerActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -28,9 +28,9 @@ public class update_admin extends javax.swing.JFrame {
     }
     
     private boolean isEmailValid(String email) {
-        // More robust regex (but still not perfect for all valid email addresses)
+       
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        // Compile the regex pattern only ONCE (outside the function for efficiency)
+        
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
@@ -44,7 +44,7 @@ public class update_admin extends javax.swing.JFrame {
         ResultSet resultSet = db.getData(query);
        
        
-        if (resultSet.next()) { // Check if any record exists
+        if (resultSet.next()) { 
             email1 = resultSet.getString("email");
         if(email1.equals(email.getText())){
              JOptionPane.showMessageDialog(null, "Email is Already Used");
@@ -89,9 +89,9 @@ public class update_admin extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile_3135715 (1).png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("Update User Form");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
         lastname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Last Name"));
         jPanel1.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 190, 50));
