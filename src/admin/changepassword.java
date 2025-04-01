@@ -28,7 +28,21 @@ public class changepassword extends javax.swing.JFrame {
     public changepassword() {
         initComponents();
     }
+        private void logChangePasswordAction(int userId, String Username) {
+    String sql = "INSERT INTO tbl_logs (user_id, activity_description, timestamp) VALUES (?, ?, NOW())";
 
+    connectDB db = new connectDB();
+    try (Connection conn = db.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        pstmt.setInt(1, userId);
+        pstmt.setString(2, "Password Changed: " + Username); 
+        pstmt.executeUpdate();
+
+    } catch (SQLException e) {
+        System.err.println("Failed to log user changing of password: " + e.getMessage());
+    }
+}
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -153,8 +167,8 @@ public class changepassword extends javax.swing.JFrame {
         int updatedRows = updateStmt.executeUpdate();
         if (updatedRows > 0) {
             JOptionPane.showMessageDialog(null, "Password updated successfully!");
+            logChangePasswordAction(Session.getInstance().getId(), "" + Session.getInstance().getId());
 
-            
             Session sess = Session.getInstance();
             sess.setPass(hashedNewPass);
 
@@ -171,13 +185,13 @@ public class changepassword extends javax.swing.JFrame {
                 sess.setEmail(rs.getString("email"));
                 sess.setUsername(rs.getString("username"));
                 sess.setType(rs.getString("type"));
-                sess.setStatus(rs.getString("status_1"));
-                sess.setContact(rs.getString("phone_number"));
+                sess.setStatus(rs.getString("status"));
+                sess.setContact(rs.getString("contact"));
             }
 
           
-            admin_settings changecontact = new admin_settings();  
-            changecontact.setVisible(true);
+            admin_settings changepassword = new admin_settings();  
+            changepassword.setVisible(true);
             this.dispose();
             
         } else {

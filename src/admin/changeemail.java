@@ -53,6 +53,22 @@ public class changeemail extends javax.swing.JFrame {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+    private void logChangeEmailAction(int userId, String Username) {
+    String sql = "INSERT INTO tbl_logs (user_id, activity_description, timestamp) VALUES (?, ?, NOW())";
+
+    connectDB db = new connectDB();
+    try (Connection conn = db.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        pstmt.setInt(1, userId);
+        pstmt.setString(2, "Email changed: " + Username); 
+        pstmt.executeUpdate();
+
+    } catch (SQLException e) {
+        System.err.println("Failed to log user changing of email " + e.getMessage());
+    }
+}
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -173,7 +189,7 @@ try {
     }
 
    
-    String updateQuery = "UPDATE tbl_users SET email = ? WHERE u_id = ?";
+    String updateQuery = "UPDATE tbl_users SET email = ? WHERE id = ?";
     PreparedStatement updateStmt = con.prepareStatement(updateQuery);
     updateStmt.setString(1, newEmailText);
     updateStmt.setString(2, id.getText());
@@ -182,7 +198,7 @@ try {
 
     if (rowsUpdated > 0) {
         JOptionPane.showMessageDialog(null, "Email updated successfully!");
-
+        logChangeEmailAction(Integer.parseInt(id.getText()), id.getText());
       
         Session sess = Session.getInstance();
         sess.setEmail(newEmailText);

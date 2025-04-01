@@ -5,7 +5,7 @@
  */
 package guigrade;
 
-import admin.admin_pass;
+import admin.admin_dashb;
 import static java.lang.reflect.Array.set;
 
 /**
@@ -97,7 +97,7 @@ public class welcomepage extends javax.swing.JFrame {
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 80, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Choose account type");
+        jLabel6.setText("Choose account to Login");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 350, 240));
@@ -113,7 +113,7 @@ public class welcomepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        admin_pass welcomepage = new admin_pass();
+        sign_in_ins welcomepage = new sign_in_ins();
          welcomepage.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

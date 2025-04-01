@@ -192,8 +192,8 @@ public class admin_settings extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        admin_settings admin_dashb = new admin_settings();  
-        admin_dashb.setVisible(true);
+        admin_dashb admin_settings = new admin_dashb();  
+        admin_settings.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/admin/update_admin.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/student/student_list.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/sign_in_ins.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/config/connectDB.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/admin/approval.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/admin/changecontact.java</file>
+            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/admin/system_logs.java</file>
         </group>
     </open-files>
 </project-private>

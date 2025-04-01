@@ -5,8 +5,10 @@
  */
 package admin;
 
+import config.Session;
 import config.connectDB;
 import guigrade.sign_in_ins;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,6 +73,23 @@ public class reg_admin extends javax.swing.JFrame {
 
     return isDuplicate;
 }
+     
+       private void logAddUserAction(int userId, String Username) {
+    String sql = "INSERT INTO tbl_logs (user_id, activity_description, timestamp) VALUES (?, ?, NOW())";
+
+    connectDB db = new connectDB();
+    try (Connection conn = db.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        pstmt.setInt(1, userId);
+        pstmt.setString(2, "User deleted: " + Username); 
+        pstmt.executeUpdate();
+
+    } catch (SQLException e) {
+        System.err.println("Failed to log user deletion: " + e.getMessage());
+    }
+}
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -83,15 +102,24 @@ public class reg_admin extends javax.swing.JFrame {
         fname = new javax.swing.JTextField();
         lname = new javax.swing.JTextField();
         em = new javax.swing.JTextField();
-        cpass = new javax.swing.JPasswordField();
         pass = new javax.swing.JPasswordField();
         register = new javax.swing.JButton();
         ut = new javax.swing.JComboBox<>();
         us = new javax.swing.JComboBox<>();
-        id = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
+        cn = new javax.swing.JTextField();
+        separator = new javax.swing.JSeparator();
+        acc_id = new javax.swing.JLabel();
+        acc_name = new javax.swing.JLabel();
+        acc_lname = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -99,14 +127,14 @@ public class reg_admin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(26, 6, 74));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile_3135715 (1).png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("New User");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
 
         username.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Username", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         username.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +142,7 @@ public class reg_admin extends javax.swing.JFrame {
                 usernameActionPerformed(evt);
             }
         });
-        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 200, 60));
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 200, 60));
 
         fname.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "First Name", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         fname.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +150,7 @@ public class reg_admin extends javax.swing.JFrame {
                 fnameActionPerformed(evt);
             }
         });
-        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 200, 60));
+        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 200, 60));
 
         lname.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Last Name", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         lname.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +158,7 @@ public class reg_admin extends javax.swing.JFrame {
                 lnameActionPerformed(evt);
             }
         });
-        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, 60));
+        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 200, 60));
 
         em.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Email", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
         em.addActionListener(new java.awt.event.ActionListener() {
@@ -138,18 +166,10 @@ public class reg_admin extends javax.swing.JFrame {
                 emActionPerformed(evt);
             }
         });
-        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 200, 60));
-
-        cpass.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Confirm Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
-        cpass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpassActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 200, 60));
+        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 200, 60));
 
         pass.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Password", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
-        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 200, 60));
+        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 200, 60));
 
         register.setBackground(new java.awt.Color(255, 255, 255));
         register.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -166,7 +186,7 @@ public class reg_admin extends javax.swing.JFrame {
                 registerActionPerformed(evt);
             }
         });
-        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 80, 30));
+        jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 80, 30));
 
         ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User Type", "User", "Admin" }));
         ut.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +194,7 @@ public class reg_admin extends javax.swing.JFrame {
                 utActionPerformed(evt);
             }
         });
-        jPanel1.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 180, 60));
+        jPanel1.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 180, 60));
 
         us.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staus Type", "Active", "Pending" }));
         us.addActionListener(new java.awt.event.ActionListener() {
@@ -182,15 +202,7 @@ public class reg_admin extends javax.swing.JFrame {
                 usActionPerformed(evt);
             }
         });
-        jPanel1.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 180, 60));
-
-        id.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "ID", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
-        id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idActionPerformed(evt);
-            }
-        });
-        jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 200, 60));
+        jPanel1.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 180, 60));
 
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton6.setText("Back");
@@ -199,9 +211,34 @@ public class reg_admin extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 80, 30));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 80, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 590));
+        cn.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true), "Contact", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP));
+        cn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 200, 60));
+        jPanel1.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 540, 10));
+
+        acc_id.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        acc_id.setText("ID");
+        jPanel1.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+
+        acc_name.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        acc_name.setText("Admin");
+        jPanel1.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
+
+        acc_lname.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        acc_lname.setText("name");
+        jPanel1.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Current User ID:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 420));
 
         pack();
         setLocationRelativeTo(null);
@@ -223,10 +260,6 @@ public class reg_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emActionPerformed
 
-    private void cpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpassActionPerformed
-
     private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
 
     }//GEN-LAST:event_registerMouseClicked
@@ -235,28 +268,29 @@ public class reg_admin extends javax.swing.JFrame {
 
         connectDB db = new connectDB();
 
-        if(username.getText().isEmpty() || fname.getText().isEmpty() || lname.getText().isEmpty() || em.getText().isEmpty()
-            || pass.getText().isEmpty() || cpass.getText().isEmpty()){ 
+        if(username.getText().isEmpty() || fname.getText().isEmpty() || lname.getText().isEmpty() || em.getText().isEmpty()  || cn.getText().isEmpty()
+            || pass.getText().isEmpty()){ 
             JOptionPane.showMessageDialog(null, "All fields required");
 
         }else if(!isEmailValid(em.getText())){
             JOptionPane.showMessageDialog(null, "Your email format is invalid, Please Try again!");
         }else if(duplicateChecker()){
             System.out.println("Duplicate Existed");
+          } else if (!cn.getText().matches("\\d+")) {
+        JOptionPane.showMessageDialog(null, "Contact number must only contain digits");
        
         }else if(pass.getText().length() < 8){
 
             JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long");
-        }else if(!pass.getText().equals(cpass.getText())){
-
-            JOptionPane.showMessageDialog(null, "Password not Matches");
-        }else if (db.insertData("INSERT INTO tbl_users(username, fname, lname, email, type, pass, cpass, status) "
-                + "VALUES ('"+username.getText()+"', '"+fname.getText()+"', '"+lname.getText()+"', '"+em.getText()+"', '"+ut.getSelectedItem()+"', '"+pass.getText()+"', "
-                        + "'"+cpass.getText()+"', '"+us.getSelectedItem()+"')") > 0 ) {
+       
+        }else if (db.insertData("INSERT INTO tbl_users(username, fname, lname, email, contact, type, pass, status) "
+                + "VALUES ('"+username.getText()+"', '"+fname.getText()+"', '"+lname.getText()+"', '"+em.getText()+"', '"+cn.getText()+"', '"+ut.getSelectedItem()+"', '"+pass.getText()+"',  '"+us.getSelectedItem()+"')") > 0 ) {
             JOptionPane.showMessageDialog(null, "Connection Error");
         }else{
             
             JOptionPane.showMessageDialog(null, "Submitted Successfuly");
+            logAddUserAction(1, username.getText()); 
+              
             sign_in_ins reg_admin = new sign_in_ins();
             reg_admin.setVisible(true);
             this.dispose();
@@ -271,15 +305,29 @@ public class reg_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usActionPerformed
 
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
          admin_dashb reg_admin = new admin_dashb();
          reg_admin.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void cnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cnActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+       if(sess.getId()== 0){
+       JOptionPane.showMessageDialog(null,"No Account, Log in First");
+       sign_in_ins admin_dashb = new sign_in_ins();
+       admin_dashb.setVisible(true);
+       this.dispose();
+       }else{
+            acc_name.setText(""+sess.getFname());
+            acc_lname.setText(""+sess.getLname());
+            acc_id.setText(""+sess.getId());
+       } 
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -317,18 +365,22 @@ public class reg_admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JPasswordField cpass;
+    private javax.swing.JLabel acc_id;
+    private javax.swing.JLabel acc_lname;
+    private javax.swing.JLabel acc_name;
+    public javax.swing.JTextField cn;
     public javax.swing.JTextField em;
     public javax.swing.JTextField fname;
-    public javax.swing.JTextField id;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JTextField lname;
     public javax.swing.JPasswordField pass;
     private javax.swing.JButton register;
+    private javax.swing.JSeparator separator;
     public javax.swing.JComboBox<String> us;
     public javax.swing.JTextField username;
     public javax.swing.JComboBox<String> ut;

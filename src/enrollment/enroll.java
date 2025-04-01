@@ -241,7 +241,7 @@ public class enroll extends javax.swing.JFrame {
    
     try {
         connectDB db = new connectDB();
-        String query = "INSERT INTO tbl_enrollment (studentID, courseID, programID, year_lvl, section, semester, dateEnrolled, status) " +
+        String query = "INSERT INTO tbl_enrollment (studentID, year_level, program, section, course, course_description, date_enrolled, status) " +
                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement pstmt = db.getConnection().prepareStatement(query);

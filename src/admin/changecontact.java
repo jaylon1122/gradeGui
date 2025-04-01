@@ -7,6 +7,7 @@ package admin;
 
 import config.Session;
 import config.connectDB;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ private boolean phoneExists(String phoneNumber) {
     boolean exists = false;
     try {
          connectDB db = new connectDB();
-        String query = "SELECT * FROM tbl_users WHERE phone_number = ?";
+        String query = "SELECT * FROM tbl_users WHERE contact = ?";
         PreparedStatement pstmt = db.getConnection().prepareStatement(query);
         pstmt.setString(1, phoneNumber);
         
@@ -41,6 +42,21 @@ private boolean phoneExists(String phoneNumber) {
         e.printStackTrace();
     }
     return exists;
+}
+ private void logChangeContactAction(int userId, String Username) {
+    String sql = "INSERT INTO tbl_logs (user_id, activity_description, timestamp) VALUES (?, ?, NOW())";
+
+    connectDB db = new connectDB();
+    try (Connection conn = db.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        pstmt.setInt(1, userId);
+        pstmt.setString(2, "Contact Changed: " + Username); 
+        pstmt.executeUpdate();
+
+    } catch (SQLException e) {
+        System.err.println("Failed to log user changing of contact: " + e.getMessage());
+    }
 }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -103,6 +119,7 @@ private boolean phoneExists(String phoneNumber) {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 540, 440));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -127,8 +144,8 @@ if (!newPhoneText.matches("\\d+")) {
     return;
 }
 
-if (newPhoneText.length() > 15 || newPhoneText.length() < 10) {
-    JOptionPane.showMessageDialog(null, "Phone number must be between 10 to 15 digits long.");
+if (newPhoneText.length() > 11 || newPhoneText.length() < 11) {
+    JOptionPane.showMessageDialog(null, "Phone number must be 8 digits long.");
     return;
 }
 
@@ -141,7 +158,7 @@ if (!phoneExists(currentPhoneText)) {
 
 try {
     connectDB db = new connectDB();
-    String query = "UPDATE tbl_users SET phone_number = ? WHERE id = ?";
+    String query = "UPDATE tbl_users SET contact = ? WHERE id = ?";
     
     PreparedStatement pstmt = db.getConnection().prepareStatement(query);
     pstmt.setString(1, newPhoneText);
@@ -157,6 +174,7 @@ try {
         sess.setContact(newPhoneText); 
 
         JOptionPane.showMessageDialog(null, "Phone number updated successfully!");
+         logChangeContactAction(Integer.parseInt(id.getText()), id.getText());
 
        
         admin_settings changecontact = new admin_settings();  

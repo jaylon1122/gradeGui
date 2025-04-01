@@ -72,8 +72,11 @@ public class admin_dashb extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -201,7 +204,7 @@ public class admin_dashb extends javax.swing.JFrame {
         p_student.add(jLabel12);
         jLabel12.setBounds(20, 0, 90, 25);
 
-        jPanel3.add(p_student, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 130, 30));
+        jPanel3.add(p_student, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 30));
 
         jPanel2.setBackground(new java.awt.Color(88, 88, 100));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,7 +220,7 @@ public class admin_dashb extends javax.swing.JFrame {
         jPanel2.add(jLabel8);
         jLabel8.setBounds(30, 0, 90, 20);
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 30));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 30));
 
         jPanel5.setBackground(new java.awt.Color(88, 88, 100));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -232,8 +235,10 @@ public class admin_dashb extends javax.swing.JFrame {
         jLabel9.setText("Settings");
         jPanel5.add(jLabel9);
         jLabel9.setBounds(33, 10, 90, 25);
+        jPanel5.add(jPanel8);
+        jPanel8.setBounds(10, -30, 10, 10);
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 300, 150, 40));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 320, 150, 40));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -249,6 +254,20 @@ public class admin_dashb extends javax.swing.JFrame {
         jPanel7.setLayout(null);
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 130, 30));
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Logs");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 290, 50, -1));
+
+        jPanel9.setBackground(new java.awt.Color(88, 88, 100));
+        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel9MouseClicked(evt);
+            }
+        });
+        jPanel9.setLayout(null);
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, 40));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, 370));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/businessman_6997481.png"))); // NOI18N
@@ -258,6 +277,7 @@ public class admin_dashb extends javax.swing.JFrame {
         jLabel3.setText("Admin Dashboard");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
 
+        userstable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         userstable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -266,6 +286,7 @@ public class admin_dashb extends javax.swing.JFrame {
 
             }
         ));
+        userstable.setGridColor(new java.awt.Color(51, 0, 102));
         jScrollPane1.setViewportView(userstable);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 570, 350));
@@ -313,15 +334,7 @@ public class admin_dashb extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
-       int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out?", "Logout Confirmation!",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-        if (choice == JOptionPane.YES_OPTION) {
-
-           welcomepage si = new welcomepage();
-            si.setVisible(true);
-            this.dispose();
-        }
+   
     }//GEN-LAST:event_logoutMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -395,9 +408,15 @@ public class admin_dashb extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-       sign_in_ins admin_dashb = new sign_in_ins();
-       admin_dashb.setVisible(true);
-       this.dispose();
+        int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out?", "Logout Confirmation!",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (choice == JOptionPane.YES_OPTION) {
+
+           welcomepage si = new welcomepage();
+            si.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void p_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_deleteMouseClicked
@@ -411,6 +430,12 @@ public class admin_dashb extends javax.swing.JFrame {
        admin_dashb.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jPanel7MouseClicked
+
+    private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
+       system_logs admin_dashb = new system_logs();
+       admin_dashb.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jPanel9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -456,6 +481,7 @@ public class admin_dashb extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -471,6 +497,8 @@ public class admin_dashb extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel logout;
