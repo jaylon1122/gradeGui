@@ -8,7 +8,7 @@ package admin;
 import config.Session;
 import config.connectDB;
 import grade.grade_dashb;
-import guigrade.sign_in_ins;
+import authentication.sign_in_ins;
 import guigrade.welcomepage;
 import java.awt.Color;
 import java.sql.PreparedStatement;
@@ -39,7 +39,7 @@ public class admin_dashb extends javax.swing.JFrame {
         
         try{
             connectDB db = new connectDB();
-        ResultSet rs = db.getData("SELECT * FROM tbl_users");
+        ResultSet rs = db.getData("SELECT id, username, fname, lname, email ,type FROM tbl_users");
         userstable.setModel(DbUtils.resultSetToTableModel(rs));
         rs.close();
         }catch(SQLException e){
@@ -275,7 +275,7 @@ public class admin_dashb extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel3.setText("Admin Dashboard");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
 
         userstable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         userstable.setModel(new javax.swing.table.DefaultTableModel(
@@ -289,16 +289,16 @@ public class admin_dashb extends javax.swing.JFrame {
         userstable.setGridColor(new java.awt.Color(51, 0, 102));
         jScrollPane1.setViewportView(userstable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 570, 350));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 690, 350));
 
         jPanel4.setBackground(new java.awt.Color(26, 6, 74));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 30));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 30));
 
         acc_lname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         acc_lname.setText("Admin");
         jPanel1.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 540, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 690, 10));
 
         acc_name.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         acc_name.setText("Admin");
@@ -313,11 +313,11 @@ public class admin_dashb extends javax.swing.JFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exit_11820531 (1).png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("LogOut");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -325,9 +325,9 @@ public class admin_dashb extends javax.swing.JFrame {
                 jPanel6MouseClicked(evt);
             }
         });
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 110, 50));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 110, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 530));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 530));
 
         pack();
         setLocationRelativeTo(null);

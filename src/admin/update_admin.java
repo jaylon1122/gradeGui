@@ -8,7 +8,7 @@ package admin;
 import config.Session;
 import config.connectDB;
 import config.passwordHasher;
-import guigrade.sign_in_ins;
+import authentication.sign_in_ins;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
