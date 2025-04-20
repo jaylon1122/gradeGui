@@ -6,7 +6,11 @@
 package student;
 
 import admin.admin_dashb;
+import config.connectDB;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -19,10 +23,13 @@ public class student_dashb extends javax.swing.JFrame {
      */
     public student_dashb() {
         initComponents();
+         
     }
 
       Color navcolor = new Color(88,88,100);
       Color hovercolor = new Color(255,255,255);
+     
+      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -117,7 +124,7 @@ public class student_dashb extends javax.swing.JFrame {
         });
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 560, 390));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 560, 430));
 
         pack();
         setLocationRelativeTo(null);
@@ -135,12 +142,6 @@ public class student_dashb extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       student_list student_dashb = new student_list();
-       student_dashb.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         update_student student_dashb = new update_student();
         student_dashb.setVisible(true);
@@ -152,6 +153,12 @@ public class student_dashb extends javax.swing.JFrame {
         student_dashb.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        student_list student_dashb = new student_list();
+        student_dashb.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

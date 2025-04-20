@@ -90,7 +90,7 @@ public class updateenrollment extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 690, 20));
 
         yl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        yl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st Year", "2md Year", "3rd Year", "4th Year" }));
+        yl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st Year", "2mnd Year", "3rd Year", "4th Year" }));
         jPanel1.add(yl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 210, 50));
 
         section.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -107,10 +107,10 @@ public class updateenrollment extends javax.swing.JFrame {
         jPanel1.add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 210, 50));
 
         status.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enrolled" }));
         jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 210, 50));
 
-        dateEnrolled.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Date Enrolled"));
+        dateEnrolled.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Date "));
         jPanel1.add(dateEnrolled, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 50));
 
         studentID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Student ID"));
@@ -187,7 +187,7 @@ public class updateenrollment extends javax.swing.JFrame {
                 courseDActionPerformed(evt);
             }
         });
-        jPanel1.add(courseD, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 250, 50));
+        jPanel1.add(courseD, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 210, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 790, 490));
 

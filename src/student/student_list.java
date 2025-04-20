@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package student;
 
 import config.connectDB;
@@ -10,15 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
 
-/**
- *
- * @author HP745 G3
- */
+
 public class student_list extends javax.swing.JFrame {
 
-    /**
-     * Creates new form student_list
-     */
+    
     public student_list() {
         initComponents();
          displayUsers();
@@ -28,7 +19,7 @@ public class student_list extends javax.swing.JFrame {
         
         try{
             connectDB db = new connectDB();
-        ResultSet rs = db.getData("SELECT * FROM tbl_student");
+        ResultSet rs = db.getData("SELECT student_id, fname, lname FROM tbl_student");
         studenttable.setModel(DbUtils.resultSetToTableModel(rs));
         rs.close();
         }catch(SQLException e){
@@ -84,7 +75,7 @@ public class student_list extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 670, 350));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Quit");
+        jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -104,9 +95,7 @@ public class student_list extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

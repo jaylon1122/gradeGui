@@ -60,6 +60,11 @@ public class updategrade extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Quit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
 
         finalg.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Final", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
@@ -146,7 +151,7 @@ public class updategrade extends javax.swing.JFrame {
 
            
             connectDB db = new connectDB();
-            String query = "UPDATE tbl_grade SET prelim = ?, midterm = ?, prefinal = ?, final = ?, average = ?, status = ? WHERE student_id = ? AND course_id = ?";
+            String query = "UPDATE tbl_grade SET prelim = ?, midterm = ?, prefinal = ?, final = ?, average = ?, status = ? WHERE student_id = ? AND course = ?";
             PreparedStatement pstmt = db.getConnection().prepareStatement(query);
 
             pstmt.setDouble(1, prelimGrade);
@@ -178,6 +183,12 @@ public class updategrade extends javax.swing.JFrame {
     private void courseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_courseActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       grade_dashb update_grade = new grade_dashb();
+       update_grade.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

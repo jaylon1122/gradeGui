@@ -320,11 +320,9 @@
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="PF205"/>
-                <StringItem index="1" value="IM207"/>
-                <StringItem index="2" value="IPT209"/>
-                <StringItem index="3" value="NET208"/>
+              <StringArray count="2">
+                <StringItem index="0" value="BSIT"/>
+                <StringItem index="1" value=" "/>
               </StringArray>
             </Property>
           </Properties>

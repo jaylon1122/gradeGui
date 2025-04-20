@@ -161,7 +161,7 @@ public class enroll extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 70, -1));
 
         program.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        program.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PF205", "IM207", "IPT209", "NET208" }));
+        program.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BSIT", " " }));
         program.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 programActionPerformed(evt);
@@ -241,18 +241,19 @@ public class enroll extends javax.swing.JFrame {
    
     try {
         connectDB db = new connectDB();
-        String query = "INSERT INTO tbl_enrollment (studentID, year_level, program, section, course, course_description, date_enrolled, status) " +
-                       "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO tbl_enrollment (studentID, year_level, semester, program, section, course, course_description, date_enrolled, status) " +
+                       "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement pstmt = db.getConnection().prepareStatement(query);
-        pstmt.setString(1, stID);
-        pstmt.setString(2, crs);
-        pstmt.setString(3, prog);
-        pstmt.setString(4, yearl);
-        pstmt.setString(5, sec);
-        pstmt.setString(6, sem);
-        pstmt.setString(7, dateEn);
-        pstmt.setString(8, stat);
+        pstmt.setString(1, stID);         
+        pstmt.setString(2, yearl);        
+        pstmt.setString(3, sem);          
+        pstmt.setString(4, prog);         
+        pstmt.setString(5, sec);          
+        pstmt.setString(6, crs);          
+        pstmt.setString(7, crsDesc);      
+        pstmt.setString(8, dateEn);       
+        pstmt.setString(9, stat);  
 
         int rowsInserted = pstmt.executeUpdate();
         JOptionPane.showMessageDialog(null, rowsInserted > 0 ? "Enrollment Successful!" : "Enrollment Failed!");

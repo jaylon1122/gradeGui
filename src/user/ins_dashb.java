@@ -56,6 +56,7 @@ public class ins_dashb extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -164,6 +165,14 @@ public class ins_dashb extends javax.swing.JFrame {
         });
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 150, 50));
 
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 180, 50));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 700, 480));
 
         pack();
@@ -197,7 +206,7 @@ public class ins_dashb extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-      grade_list ins_dashb = new grade_list();
+      grade_table ins_dashb = new grade_table();
       ins_dashb.setVisible(true);
       this.dispose();
     }//GEN-LAST:event_jPanel5MouseClicked
@@ -207,6 +216,12 @@ public class ins_dashb extends javax.swing.JFrame {
        ins_dashb.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+      table_enroll ins_dashb = new table_enroll();
+      ins_dashb.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_jPanel7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -266,6 +281,7 @@ public class ins_dashb extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

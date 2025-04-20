@@ -146,6 +146,11 @@ try {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 330));
 
         forgot.setText("Forgot Password?");
+        forgot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forgotMouseClicked(evt);
+            }
+        });
         jPanel1.add(forgot, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 490, 330));
@@ -208,6 +213,12 @@ try {
 }
         
     }//GEN-LAST:event_loginMouseClicked
+
+    private void forgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotMouseClicked
+        forgotpass ins_dashb = new forgotpass();
+        ins_dashb.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_forgotMouseClicked
 
     /**
      * @param args the command line arguments

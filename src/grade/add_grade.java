@@ -40,11 +40,12 @@ public class add_grade extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         finalg = new javax.swing.JTextField();
         student_id = new javax.swing.JTextField();
-        c_id = new javax.swing.JTextField();
         midterm = new javax.swing.JTextField();
         prelim = new javax.swing.JTextField();
         prefinal = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        c_id = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,6 +64,11 @@ public class add_grade extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Quit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
 
         finalg.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Final", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
@@ -70,9 +76,6 @@ public class add_grade extends javax.swing.JFrame {
 
         student_id.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Student ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel1.add(student_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 170, 50));
-
-        c_id.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Course ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
-        jPanel1.add(c_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 170, 50));
 
         midterm.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Midterm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel1.add(midterm, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 170, 50));
@@ -92,6 +95,18 @@ public class add_grade extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, -1, -1));
 
+        c_id.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        c_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PF205", "IM207", "IPT209", "NET208" }));
+        c_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_idActionPerformed(evt);
+            }
+        });
+        jPanel1.add(c_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 170, 50));
+
+        jLabel2.setText("Select Course");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 670, 320));
 
         jPanel2.setBackground(new java.awt.Color(26, 6, 74));
@@ -103,15 +118,15 @@ public class add_grade extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String studentIdText = student_id.getText();
-        String courseIdText = (c_id.getText());
-        String pl = prelim.getText();
-        String mid = midterm.getText();
-        String pf = prefinal.getText();
-        String fl = finalg.getText();
+       String studentIdText = student_id.getText();
+String courseIdText = (String) c_id.getSelectedItem(); // ⬅️ updated for combo box
+String pl = prelim.getText();
+String mid = midterm.getText();
+String pf = prefinal.getText();
+String fl = finalg.getText();
 
 // Check for empty fields
-if (studentIdText.isEmpty() || courseIdText.isEmpty() || pl.isEmpty() || mid.isEmpty() || pf.isEmpty() || fl.isEmpty()) {
+if (studentIdText.isEmpty() || courseIdText == null || pl.isEmpty() || mid.isEmpty() || pf.isEmpty() || fl.isEmpty()) {
     JOptionPane.showMessageDialog(this, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
     return;
 }
@@ -131,13 +146,11 @@ try {
         return;
     }
 
-    // Compute the average
     double average = (prelimGrade + midtermGrade + prefinalGrade + finalGrade) / 4.0;
     String status = (average >= 1.0 && average <= 3.0) ? "Passed" : "Failed";
 
-    // Database connection and insertion
     connectDB db = new connectDB();
-    String query = "INSERT INTO tbl_grade (student_id, course_id, prelim, midterm, prefinal, final, average, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    String query = "INSERT INTO tbl_grade (student_id, course, prelim, midterm, prefinal, final, average, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement pstmt = db.getConnection().prepareStatement(query);
 
     pstmt.setString(1, studentIdText);
@@ -162,8 +175,18 @@ try {
 } catch (SQLException ex) {
     JOptionPane.showMessageDialog(this, "Database error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 }
-       
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     grade_dashb add_grade = new grade_dashb();
+     add_grade.setVisible(true);
+     this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void c_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c_idActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,11 +224,12 @@ try {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField c_id;
+    private javax.swing.JComboBox<String> c_id;
     private javax.swing.JTextField finalg;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

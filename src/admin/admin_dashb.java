@@ -147,6 +147,9 @@ public class admin_dashb extends javax.swing.JFrame {
 
         p_update.setBackground(new java.awt.Color(88, 88, 100));
         p_update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p_updateMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 p_updateMouseEntered(evt);
             }
@@ -436,6 +439,12 @@ public class admin_dashb extends javax.swing.JFrame {
        admin_dashb.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jPanel9MouseClicked
+
+    private void p_updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_updateMouseClicked
+        update_admin admin_dashb = new update_admin();
+        admin_dashb.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_p_updateMouseClicked
 
     /**
      * @param args the command line arguments

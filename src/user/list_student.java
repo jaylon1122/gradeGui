@@ -29,7 +29,7 @@ public class list_student extends javax.swing.JFrame {
         
         try{
             connectDB db = new connectDB();
-        ResultSet rs = db.getData("SELECT id, fname, lname FROM tbl_student");
+        ResultSet rs = db.getData("SELECT student_id, fname, lname FROM tbl_student");
         studenttable.setModel(DbUtils.resultSetToTableModel(rs));
         rs.close();
         
