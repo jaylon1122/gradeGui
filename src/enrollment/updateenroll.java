@@ -57,16 +57,9 @@ public class updateenroll extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        yl = new javax.swing.JComboBox<>();
         section = new javax.swing.JComboBox<>();
-        semester = new javax.swing.JComboBox<>();
-        status = new javax.swing.JComboBox<>();
         dateEnrolled = new javax.swing.JTextField();
-        studentID = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -89,50 +82,18 @@ public class updateenroll extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Update Student Enrollment");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 690, 20));
-
-        yl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        yl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st Year", "2md Year", "3rd Year", "4th Year" }));
-        jPanel1.add(yl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 210, 50));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 450, 20));
 
         section.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         section.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E" }));
-        jPanel1.add(section, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 210, 50));
-
-        semester.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        semester.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st Semester", "2nd Semester" }));
-        semester.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                semesterActionPerformed(evt);
-            }
-        });
-        jPanel1.add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 210, 50));
-
-        status.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
-        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 210, 50));
+        jPanel1.add(section, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 210, 50));
 
         dateEnrolled.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Date Enrolled"));
-        jPanel1.add(dateEnrolled, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 50));
-
-        studentID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Student ID"));
-        jPanel1.add(studentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 210, 50));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Year Level");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        jPanel1.add(dateEnrolled, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 210, 50));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Section");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Semester");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 100, -1));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Status");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 80, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Enroll Student");
@@ -141,7 +102,7 @@ public class updateenroll extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 130, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 130, 40));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Quit");
@@ -150,11 +111,11 @@ public class updateenroll extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, 60, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 60, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Program");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 70, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 70, -1));
 
         program.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         program.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PF205", "IM207", "IPT209", "NET208" }));
@@ -163,11 +124,11 @@ public class updateenroll extends javax.swing.JFrame {
                 programActionPerformed(evt);
             }
         });
-        jPanel1.add(program, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 210, 50));
+        jPanel1.add(program, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 210, 50));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Select Course");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 130, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, -1));
 
         course.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         course.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PF205", "IM207", "IPT209", "NET208" }));
@@ -176,11 +137,11 @@ public class updateenroll extends javax.swing.JFrame {
                 courseActionPerformed(evt);
             }
         });
-        jPanel1.add(course, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 210, 50));
+        jPanel1.add(course, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 210, 50));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Course Descrption");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
 
         courseD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         courseD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Object Oriented Programming", "Information Management", "Information  Programming and Technology", "Networking" }));
@@ -189,75 +150,95 @@ public class updateenroll extends javax.swing.JFrame {
                 courseDActionPerformed(evt);
             }
         });
-        jPanel1.add(courseD, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 250, 50));
+        jPanel1.add(courseD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 250, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 790, 490));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 580, 490));
 
         jPanel2.setBackground(new java.awt.Color(26, 6, 74));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 30));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void semesterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semesterActionPerformed
-
-    }//GEN-LAST:event_semesterActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-String stID = studentID.getText().trim();
-String yearl = yl.getSelectedItem().toString().trim();
-String sec = section.getSelectedItem().toString().trim();
-String sem = semester.getSelectedItem().toString().trim();
-String dateEn = dateEnrolled.getText().trim();
-String stat = status.getSelectedItem().toString().trim();
-String prog = program.getSelectedItem().toString().trim();
-String crs = course.getSelectedItem().toString().trim();
-String crsDesc = courseD.getSelectedItem().toString().trim();
 
+        String sec = section.getSelectedItem().toString().trim();
+        String dateEn = dateEnrolled.getText().trim();
+        String prog = program.getSelectedItem().toString().trim();
+        String crs = course.getSelectedItem().toString().trim();
+        String crsDesc = courseD.getSelectedItem().toString().trim();
 
-if (stID.isEmpty() || yearl.isEmpty() || sec.isEmpty() || sem.isEmpty() ||
-    dateEn.isEmpty() || stat.isEmpty() || prog.isEmpty() || crs.isEmpty() || crsDesc.isEmpty()) {
-    JOptionPane.showMessageDialog(null, "All fields are required!");
-    return;
-}
+        // Validate all fields
+        if ( sec.isEmpty() || dateEn.isEmpty() || 
+            prog.isEmpty() || crs.isEmpty() || crsDesc.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "All fields are required!");
+            return;
+        }
 
-if (!dateEn.matches("\\d{4}-\\d{2}-\\d{2}")) {
-    JOptionPane.showMessageDialog(null, "Invalid date format! Use YYYY-MM-DD.");
-    return;
-}
+        // Validate date format
+        if (!dateEn.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            JOptionPane.showMessageDialog(this, "Invalid date format! Use YYYY-MM-DD.");
+            return;
+        }
 
+        // Show student ID input dialog
+        String studentID = JOptionPane.showInputDialog(this, "Enter Student ID:");
+        if (studentID == null || studentID.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a Student ID!");
+            return;
+        }
 
-if (!isStudentEnrolled(stID)) {
-    JOptionPane.showMessageDialog(null, "Student is not enrolled yet!");
-    return;
-}
+        try {
+            // Check if student exists
+            connectDB db = new connectDB();
+            String checkQuery = "SELECT * FROM tbl_student WHERE studentID = ?";
+            PreparedStatement checkStmt = db.getConnection().prepareStatement(checkQuery);
+            checkStmt.setString(1, studentID);
+            ResultSet rs = checkStmt.executeQuery();
 
-try {
-    connectDB db = new connectDB();
-    String query = "UPDATE tbl_enrollment SET " +
-                   "year_level = ?, course = ?, program = ?, section = ?, course_description = ?, " +
-                   "date_enrolled = ?, status = ? " +
-                   "WHERE studentID = ?";
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(this, "Student ID not found!");
+                return;
+            }
 
-    PreparedStatement pstmt = db.getConnection().prepareStatement(query);
-    pstmt.setString(1, yearl);
-    pstmt.setString(2, crs);
-    pstmt.setString(3, prog);
-    pstmt.setString(4, sec);
-    pstmt.setString(5, crsDesc);
-    pstmt.setString(6, dateEn);
-    pstmt.setString(7, stat);
-    pstmt.setString(8, stID);
+            // Insert enrollment record
+            String insertQuery = "INSERT INTO tbl_enrollment (studentID, section, program, course, course_description, date_enrolled) " +
+                               "VALUES (?, ?, ?, ?, ?, ?)";
 
-    int rowsUpdated = pstmt.executeUpdate();
-    JOptionPane.showMessageDialog(null, rowsUpdated > 0 ? "Enrollment Updated Successfully!" : "Update Failed!");
+            PreparedStatement pstmt = db.getConnection().prepareStatement(insertQuery);
+            pstmt.setString(1, studentID);
+    
+            pstmt.setString(3, sec);
+            pstmt.setString(4, prog);
+            pstmt.setString(5, crs);
+            pstmt.setString(6, crsDesc);
+            pstmt.setString(7, dateEn);
 
-    pstmt.close();
-} catch (SQLException ex) {
-    JOptionPane.showMessageDialog(null, "Database error: " + ex.getMessage());
-}
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted > 0) {
+                JOptionPane.showMessageDialog(this, "Student enrolled successfully!");
+                // Clear fields after successful enrollment
+                dateEnrolled.setText("");
+                program.setSelectedIndex(0);
+                course.setSelectedIndex(0);
+                courseD.setSelectedIndex(0);
+            
+                section.setSelectedIndex(0);
+            } else {
+                JOptionPane.showMessageDialog(this, "Enrollment failed!");
+            }
+
+            pstmt.close();
+            checkStmt.close();
+            rs.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Database error: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -321,10 +302,7 @@ try {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -334,9 +312,5 @@ try {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JComboBox<String> program;
     private javax.swing.JComboBox<String> section;
-    private javax.swing.JComboBox<String> semester;
-    private javax.swing.JComboBox<String> status;
-    private javax.swing.JTextField studentID;
-    private javax.swing.JComboBox<String> yl;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,13 +6,23 @@
 package student;
 
 import config.connectDB;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import user.ins_dashb;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -25,6 +35,11 @@ public class student_data extends javax.swing.JFrame {
      */
     public student_data() {
         initComponents();
+        applyButtonStyle(add);
+        applyTextFieldStyle(fname);
+        applyTextFieldStyle(lname);
+        applyTextFieldStyle(em);
+        applyTextFieldStyle(cn);
     }
     
     connectDB db = new connectDB(); 
@@ -64,7 +79,74 @@ public class student_data extends javax.swing.JFrame {
 
         return isDuplicate;
     }
+     private void applyButtonStyle(JButton button) {
+    button.setBackground(new Color(245, 245, 245)); // Light gray background
+    button.setForeground(new Color(80, 0, 120));    // Deep violet text
+    button.setFont(new Font("Segoe UI", Font.BOLD, 14));
+    button.setFocusPainted(false);
+    button.setBorder(BorderFactory.createLineBorder(new Color(180, 150, 255), 1));
+    button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    button.setOpaque(true);
+
+    // Rounded corners using custom UI
+    button.setContentAreaFilled(false);
+    button.setBorderPainted(false);
+
+    button.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+        @Override
+        public void paint(Graphics g, JComponent c) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+            // Background color
+            g2.setColor(button.getModel().isRollover() ? new Color(220, 200, 255) : new Color(245, 245, 245));
+            g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), 20, 20);
+
+            // Draw the text
+            super.paint(g, c);
+            g2.dispose();
+        }
+    });
+
+    // Optional: Mouse hover changes text color slightly
+    button.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            button.setForeground(new Color(100, 0, 150));
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            button.setForeground(new Color(80, 0, 120));
+        }
+    });
+}
+     private void applyTextFieldStyle(JTextField textField) {
+    // Background and text color
+    textField.setBackground(Color.WHITE); // White background
+    textField.setForeground(new Color(60, 60, 60)); // Dark gray text
+    textField.setFont(new Font("Segoe UI", Font.PLAIN, 14));
     
+    // Border and rounded corners
+    textField.setBorder(BorderFactory.createLineBorder(new Color(204, 153, 255), 1)); // Lilac border
+    textField.setCaretColor(new Color(102, 0, 102)); // Lilac cursor
+    textField.setOpaque(true);
+
+    // Rounded corners
+    textField.setBorder(BorderFactory.createCompoundBorder(
+        textField.getBorder(), 
+        BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding inside the text field
+    ));
+
+    // Focus effect: stronger lilac border on focus
+    textField.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            textField.setBorder(BorderFactory.createLineBorder(new Color(102, 0, 102), 2)); // Focus border: lilac
+        }
+
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            textField.setBorder(BorderFactory.createLineBorder(new Color(204, 153, 255), 1)); // Reset border: lilac
+        }
+    });
+}
 
    
     @SuppressWarnings("unchecked")
@@ -74,15 +156,17 @@ public class student_data extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         cn = new javax.swing.JTextField();
         fname = new javax.swing.JTextField();
         lname = new javax.swing.JTextField();
         em = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
+        add = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,48 +181,54 @@ public class student_data extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Student Information ");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
-
-        jPanel3.setBackground(new java.awt.Color(103, 95, 122));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel3MouseClicked(evt);
-            }
-        });
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Quit");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 30));
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 50, 30));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 480, 30));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 480, 10));
 
         cn.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Contact Number "));
-        jPanel2.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 240, 70));
+        jPanel2.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 240, 70));
 
         fname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "First Name"));
         jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 240, 70));
 
         lname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Last Name"));
-        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 240, 70));
+        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 240, 70));
 
         em.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Email"));
-        jPanel2.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 240, 70));
+        jPanel2.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 240, 70));
 
-        jPanel4.setBackground(new java.awt.Color(99, 87, 119));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
+        add.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        add.setText("Add Student");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
             }
         });
+        jPanel2.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 130, 40));
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Add Student");
-        jPanel4.add(jLabel4);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/undo_12209127 (2).png"))); // NOI18N
+        jLabel4.setText("Back");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 110, 30));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Contact Number");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("Firstname");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("Lastname");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setText("Email");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 360));
 
@@ -150,14 +240,8 @@ public class student_data extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-         student_dashb student_data = new student_dashb();
-         student_data.setVisible(true);
-         this.dispose();
-    }//GEN-LAST:event_jPanel3MouseClicked
-
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-        connectDB db = new connectDB();
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+       connectDB db = new connectDB();
 
     if(fname.getText().isEmpty() || lname.getText().isEmpty() || em.getText().isEmpty() || cn.getText().isEmpty()) {
         JOptionPane.showMessageDialog(null, "All fields are required");
@@ -182,10 +266,13 @@ public class student_data extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(null, "Connection Error");
 }
+    }//GEN-LAST:event_addActionPerformed
 
-
-   
-    }//GEN-LAST:event_jPanel4MouseClicked
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+      student_dashb student_data = new student_dashb();
+         student_data.setVisible(true);
+         this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -223,6 +310,7 @@ public class student_data extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add;
     private javax.swing.JTextField cn;
     private javax.swing.JTextField em;
     private javax.swing.JTextField fname;
@@ -230,10 +318,11 @@ public class student_data extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField lname;
     // End of variables declaration//GEN-END:variables

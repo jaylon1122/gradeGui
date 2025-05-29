@@ -2,22 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/student/student_list.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/grade/add_grade.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/enrollment/enroll_table.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/user/enrollment.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/grade/grade_dashb.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/user/addgrade.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/admin/admin_dashb.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/enrollment/enroll.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/user/grade_dash.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/grade/updategrade.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/enrollment/updateenroll.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/authentication/reg_ins.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/guigrade/welcomepage.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/user/updateenrollment.java</file>
-            <file>file:/C:/Users/HP745%20G3/Desktop/grade/gradeGui/src/admin/update_admin.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

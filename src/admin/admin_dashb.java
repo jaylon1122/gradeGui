@@ -9,16 +9,28 @@ import config.Session;
 import config.connectDB;
 import grade.grade_dashb;
 import authentication.sign_in_ins;
+import dashbaord.dashb;
 import guigrade.welcomepage;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 import settings.admin_settings;
 import student.student_dashb;
 import student.student_data;
+import admin.update_admin;
+
+
 
 
 /**
@@ -31,6 +43,7 @@ public class admin_dashb extends javax.swing.JFrame {
     public admin_dashb() {
         initComponents();
         displayUsers();
+        applyTableStyle();
     }
        
     
@@ -39,7 +52,7 @@ public class admin_dashb extends javax.swing.JFrame {
         
         try{
             connectDB db = new connectDB();
-        ResultSet rs = db.getData("SELECT id, username, fname, lname, email ,type FROM tbl_users");
+        ResultSet rs = db.getData("SELECT id, username, fname, lname, type, status FROM tbl_users");
         userstable.setModel(DbUtils.resultSetToTableModel(rs));
         rs.close();
         }catch(SQLException e){
@@ -47,6 +60,38 @@ public class admin_dashb extends javax.swing.JFrame {
         }
 
     }
+     private void applyTableStyle() {
+    userstable.setBackground(Color.WHITE);
+    userstable.setGridColor(new Color(200, 162, 200)); 
+    userstable.setShowGrid(true);
+    userstable.setFillsViewportHeight(true);
+
+ 
+    JScrollPane scroll = (JScrollPane) userstable.getParent().getParent();
+    if (scroll != null) {
+        scroll.getViewport().setBackground(Color.WHITE);
+    }
+
+   
+    TableCellRenderer whiteHeader = new DefaultTableCellRenderer() {
+
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+            label.setBackground(Color.WHITE);
+            label.setForeground(Color.BLACK);
+            label.setFont(new Font("SansSerif", Font.BOLD, 14));
+            label.setOpaque(true);
+            return label;
+        }
+    };
+
+ 
+    for (int i = 0; i < userstable.getColumnCount(); i++) {
+        userstable.getColumnModel().getColumn(i).setHeaderRenderer(whiteHeader);
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,17 +111,13 @@ public class admin_dashb extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         p_delete = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        p_student = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -87,9 +128,7 @@ public class admin_dashb extends javax.swing.JFrame {
         acc_name = new javax.swing.JLabel();
         acc_id = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -187,44 +226,6 @@ public class admin_dashb extends javax.swing.JFrame {
 
         jPanel3.add(p_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, 30));
 
-        p_student.setBackground(new java.awt.Color(88, 88, 100));
-        p_student.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                p_studentMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                p_studentMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                p_studentMouseExited(evt);
-            }
-        });
-        p_student.setLayout(null);
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Student");
-        p_student.add(jLabel12);
-        jLabel12.setBounds(20, 0, 90, 25);
-
-        jPanel3.add(p_student, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 30));
-
-        jPanel2.setBackground(new java.awt.Color(88, 88, 100));
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel2MouseClicked(evt);
-            }
-        });
-        jPanel2.setLayout(null);
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Grade");
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(30, 0, 90, 20);
-
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 30));
-
         jPanel5.setBackground(new java.awt.Color(88, 88, 100));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -241,11 +242,11 @@ public class admin_dashb extends javax.swing.JFrame {
         jPanel5.add(jPanel8);
         jPanel8.setBounds(10, -30, 10, 10);
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 320, 150, 40));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 260, 150, 40));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Approval");
+        jLabel13.setText("Approve");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(88, 88, 100));
@@ -257,11 +258,6 @@ public class admin_dashb extends javax.swing.JFrame {
         jPanel7.setLayout(null);
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 130, 30));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Logs");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 290, 50, -1));
-
         jPanel9.setBackground(new java.awt.Color(88, 88, 100));
         jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -269,15 +265,22 @@ public class admin_dashb extends javax.swing.JFrame {
             }
         });
         jPanel9.setLayout(null);
-        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, 40));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Logs");
+        jPanel9.add(jLabel14);
+        jLabel14.setBounds(40, 10, 50, 25);
+
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, 370));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/businessman_6997481.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-        jLabel3.setText("Admin Dashboard");
+        jLabel3.setText("Users Dashboard");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
 
         userstable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -290,6 +293,7 @@ public class admin_dashb extends javax.swing.JFrame {
             }
         ));
         userstable.setGridColor(new java.awt.Color(51, 0, 102));
+        userstable.setSelectionBackground(new java.awt.Color(204, 204, 255));
         jScrollPane1.setViewportView(userstable);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 690, 350));
@@ -300,35 +304,30 @@ public class admin_dashb extends javax.swing.JFrame {
 
         acc_lname.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         acc_lname.setText("Admin");
-        jPanel1.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 690, 10));
+        jPanel1.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 600, 10));
 
         acc_name.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         acc_name.setText("Admin");
-        jPanel1.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
+        jPanel1.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
 
         acc_id.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         acc_id.setText("ID");
-        jPanel1.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+        jPanel1.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel11.setText("Current User ID:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exit_11820531 (1).png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("LogOut");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, -1, -1));
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/undo_12209127 (2).png"))); // NOI18N
+        jLabel15.setText("Back");
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
+                jLabel15MouseClicked(evt);
             }
         });
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 110, 50));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 530));
 
@@ -384,54 +383,77 @@ public class admin_dashb extends javax.swing.JFrame {
         
     }//GEN-LAST:event_p_deleteMouseExited
 
-    private void p_studentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_studentMouseEntered
-      
-    }//GEN-LAST:event_p_studentMouseEntered
-
-    private void p_studentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_studentMouseExited
-       
-    }//GEN-LAST:event_p_studentMouseExited
-
-    private void p_studentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_studentMouseClicked
-         student_dashb admin_dashb = new student_dashb();
-         admin_dashb.setVisible(true);
-            this.dispose();
-    }//GEN-LAST:event_p_studentMouseClicked
-
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-       grade_dashb admin_dashb = new grade_dashb();
-       admin_dashb.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_jPanel2MouseClicked
-
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
        admin_settings admin_dashb = new admin_settings();
        admin_dashb.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jPanel5MouseClicked
 
-    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-        int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out?", "Logout Confirmation!",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-        if (choice == JOptionPane.YES_OPTION) {
-
-           welcomepage si = new welcomepage();
-            si.setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_jPanel6MouseClicked
-
     private void p_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_deleteMouseClicked
-       delete_admin admin_dashb = new delete_admin();
-       admin_dashb.setVisible(true);
-       this.dispose(); 
+      int rowIndex = userstable.getSelectedRow();
+
+if(rowIndex < 0){
+    JOptionPane.showMessageDialog(null, "Please Select an Item!!");
+}else{
+    connectDB db = new connectDB();
+    TableModel tbl = userstable.getModel();
+    String userId = tbl.getValueAt(rowIndex, 0).toString();
+    
+    int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this user?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+    if(confirm == JOptionPane.YES_OPTION){
+       
+        String query = "DELETE FROM tbl_users WHERE id = '" + userId + "'";
+        int result = db.executeUpdate(query);
+        
+        if(result > 0){
+            JOptionPane.showMessageDialog(null, "User deleted successfully!");
+            
+            new admin_dashb().setVisible(true);
+            this.dispose();
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Could not delete the user.");
+        }
+    }
+}
+
     }//GEN-LAST:event_p_deleteMouseClicked
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-       approval admin_dashb = new approval();
-       admin_dashb.setVisible(true);
-       this.dispose();
+      int rowIndex = userstable.getSelectedRow();
+       
+    if (rowIndex < 0) {
+        JOptionPane.showMessageDialog(null, "Please Select an Item!!");
+    } else {
+        try {
+         connectDB db = new connectDB();
+         TableModel tbl = userstable.getModel();
+         ResultSet rs = db.getData("SELECT * FROM tbl_users WHERE id ='" + tbl.getValueAt(rowIndex, 0) + "'");
+        
+        if (rs.next()) {
+            String userId = tbl.getValueAt(rowIndex, 0).toString().trim();
+
+            String sql = "UPDATE tbl_users SET status = ? WHERE id = ?";
+            PreparedStatement pstmt = db.getConnection().prepareStatement(sql);
+            pstmt.setString(1, "Active");
+            pstmt.setString(2, userId);
+
+            if (pstmt.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(this, "User status updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "User ID not found.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            new admin_dashb().setVisible(true);
+            this.dispose();
+        }        
+    } catch (SQLException ex) {
+        System.out.println("" + ex);
+    }    
+}
+
+        
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
@@ -441,10 +463,39 @@ public class admin_dashb extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel9MouseClicked
 
     private void p_updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_updateMouseClicked
-        update_admin admin_dashb = new update_admin();
-        admin_dashb.setVisible(true);
-        this.dispose();
+   int rowIndex = userstable.getSelectedRow();
+       
+       if(rowIndex < 0){
+           JOptionPane.showMessageDialog(null, "Please Select an Item!!");
+       }else{
+           try{connectDB db = new connectDB();
+           TableModel tbl = userstable.getModel();
+           ResultSet rs = db.getData("SELECT * FROM tbl_users WHERE id ='"+tbl.getValueAt(rowIndex, 0 )+"'");
+           if(rs.next()){
+             update_admin up = new update_admin();
+             up.fname.setText(""+rs.getString("fname"));
+             up.lastname.setText(""+rs.getString("lname"));
+             up.email.setText(""+rs.getString("email"));
+             up.ph.setText(""+rs.getString("contact"));
+             up.username.setText(""+rs.getString("username"));
+             up.type1.setSelectedItem(""+rs.getString("type"));          
+             up.status.setSelectedItem(""+rs.getString("status")); 
+
+             up.setVisible(true);
+             this.dispose();
+         }        
+           }catch (SQLException ex){
+               System.out.println(""+ex);
+           }    
+       }
+        
     }//GEN-LAST:event_p_updateMouseClicked
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+     dashb admin_dashb = new dashb();
+     admin_dashb.setVisible(true);
+     this.dispose();
+    }//GEN-LAST:event_jLabel15MouseClicked
 
     /**
      * @param args the command line arguments
@@ -488,23 +539,18 @@ public class admin_dashb extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
@@ -513,7 +559,6 @@ public class admin_dashb extends javax.swing.JFrame {
     private javax.swing.JLabel logout;
     private javax.swing.JPanel p_add;
     private javax.swing.JPanel p_delete;
-    private javax.swing.JPanel p_student;
     private javax.swing.JPanel p_update;
     private javax.swing.JTable userstable;
     // End of variables declaration//GEN-END:variables

@@ -10,9 +10,18 @@ import grade.grade_dashb;
 import authentication.sign_in_ins;
 import config.connectDB;
 import grade.grade_list;
+import guigrade.welcomepage;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer; 
+import javax.swing.table.TableCellRenderer;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -27,6 +36,7 @@ public class ins_dashb extends javax.swing.JFrame {
     public ins_dashb() {
         initComponents();
         displayUsers();
+        applyTableStyle();
     }
 
      public void displayUsers(){
@@ -41,6 +51,43 @@ public class ins_dashb extends javax.swing.JFrame {
         }
 
     }
+    private void applyTableStyle() {
+    studenttable.setBackground(Color.WHITE);
+    studenttable.setGridColor(new Color(200, 162, 200)); 
+    studenttable.setShowGrid(true);
+    studenttable.setFillsViewportHeight(true);
+
+ 
+    JScrollPane scroll = (JScrollPane) studenttable.getParent().getParent();
+    if (scroll != null) {
+        scroll.getViewport().setBackground(Color.WHITE);
+    }
+
+   
+    TableCellRenderer whiteHeader = new DefaultTableCellRenderer() {
+
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+            label.setBackground(Color.WHITE);
+            label.setForeground(Color.BLACK);
+            label.setFont(new Font("SansSerif", Font.BOLD, 12));
+            label.setOpaque(true);
+            return label;
+        }
+    };
+
+ 
+    for (int i = 0; i < studenttable.getColumnCount(); i++) {
+        studenttable.getColumnModel().getColumn(i).setHeaderRenderer(whiteHeader);
+    }
+}
+
+
+     
+    
+     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,11 +113,11 @@ public class ins_dashb extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        studenttable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        studenttable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -91,8 +138,8 @@ public class ins_dashb extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-        jLabel2.setText("User Dashboard");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
+        jLabel2.setText("Students Table");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 610, 20));
 
         acc_name.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -172,6 +219,16 @@ public class ins_dashb extends javax.swing.JFrame {
         });
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 180, 40));
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/archive_1773638.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setText("Grade Slip");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, -1, -1));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 130, 20));
+
         studenttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -183,19 +240,11 @@ public class ins_dashb extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        studenttable.setGridColor(new java.awt.Color(204, 204, 255));
+        studenttable.setSelectionBackground(new java.awt.Color(171, 161, 179));
         jScrollPane1.setViewportView(studenttable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 540, 460));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/archive_1773638.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel7.setText("Grade Slip");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, -1, -1));
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 130, 20));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 560, 510));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 770, 620));
 
@@ -224,9 +273,15 @@ public class ins_dashb extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-        sign_in_ins ins_dashb = new sign_in_ins();
-        ins_dashb.setVisible(true);
-        this.dispose();
+        int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out?", "Logout Confirmation!",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (choice == JOptionPane.YES_OPTION) {
+
+           welcomepage si = new welcomepage();
+            si.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked

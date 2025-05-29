@@ -39,10 +39,10 @@ public class update_student extends javax.swing.JFrame {
     public boolean updatechecker() {
         connectDB db = new connectDB();
         try {
-            String query = "SELECT * FROM tbl_student WHERE email = ? AND id != ?";
+            String query = "SELECT * FROM tbl_student WHERE email = ?";
             PreparedStatement pst = db.getConnection().prepareStatement(query);
             pst.setString(1, em.getText());
-            pst.setString(2, id.getText());
+           
             ResultSet resultSet = pst.executeQuery();
 
             if (resultSet.next()) { 
@@ -76,7 +76,6 @@ public class update_student extends javax.swing.JFrame {
         em = new javax.swing.JTextField();
         cn = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        id = new javax.swing.JTextField();
         CONFIRM = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,10 +97,10 @@ public class update_student extends javax.swing.JFrame {
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 440, 30));
 
         fname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "First Name"));
-        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 250, 60));
+        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 250, 60));
 
         lname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Last Name"));
-        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 250, 60));
+        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 250, 60));
 
         em.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Email"));
         jPanel2.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 250, 60));
@@ -117,9 +116,6 @@ public class update_student extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, -1));
-
-        id.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "ID"));
-        jPanel2.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 250, 60));
 
         CONFIRM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CONFIRM.setText("Confirm");
@@ -138,7 +134,7 @@ public class update_student extends javax.swing.JFrame {
 
     private void CONFIRMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CONFIRMActionPerformed
          
-        if (id.getText().isEmpty() || fname.getText().isEmpty() || lname.getText().isEmpty() || 
+        if ( fname.getText().isEmpty() || lname.getText().isEmpty() || 
             em.getText().isEmpty() || cn.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields must be filled!");
             return;
@@ -155,13 +151,14 @@ public class update_student extends javax.swing.JFrame {
 
         connectDB db = new connectDB();
         try {
-            String query = "UPDATE tbl_student SET fname = ?, lname = ?, email = ?, contact = ? WHERE id = ?";
+           String query = "UPDATE tbl_student SET fname = ?, lname = ?, email = ?, contact = ? WHERE id = ?";
             PreparedStatement pst = db.getConnection().prepareStatement(query);
             pst.setString(1, fname.getText());
             pst.setString(2, lname.getText());
             pst.setString(3, em.getText());
             pst.setString(4, cn.getText());
-            pst.setString(5, id.getText());
+           
+           
 
             int rowsAffected = pst.executeUpdate();
             if (rowsAffected > 0) {
@@ -225,16 +222,15 @@ public class update_student extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CONFIRM;
-    private javax.swing.JTextField cn;
-    private javax.swing.JTextField em;
-    private javax.swing.JTextField fname;
-    private javax.swing.JTextField id;
+    public javax.swing.JTextField cn;
+    public javax.swing.JTextField em;
+    public javax.swing.JTextField fname;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField lname;
+    public javax.swing.JTextField lname;
     // End of variables declaration//GEN-END:variables
 }
